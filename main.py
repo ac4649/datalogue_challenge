@@ -3,6 +3,8 @@
 # Due Tuesday Apr 24 2018
 import pandas as pd
 import dynet as dy
+import nltk
+import re
 
 from model import DLmodel
 
@@ -14,15 +16,27 @@ data = pd.read_csv('deepnlp/Sheet_1.csv')
 data = data.drop(['Unnamed: 3','Unnamed: 4','Unnamed: 5','Unnamed: 6','Unnamed: 7'],axis=1)
 
 def prepareString(string):
-    string = string.replace('.','')
-    string = string.replace('(','')
-    string = string.replace(')','')
-    string = string.replace(',','')
-    string = string.replace('\/','')
-    strint = string.replace('\\','')
+    # print(string)
+    string = re.sub(r'[^A-Za-z0-9\s\']', ' ', string)
     string = string.lower()
     stringArr = string.split(' ')
-    return stringArr
+    # print(stringArr)
+    newArray = []
+    # now do some stemming, lemmatization and removal of stop words
+    for word in stringArr:
+        includeWord = True
+        if word == '':
+            includeWord = False
+
+        if word in nltk.corpus.stopwords.words('english'):
+            includeWord = False
+
+        if includeWord == True:
+            newArray.append(word)
+
+    # print(newArray)
+    # exit()
+    return newArray
 
 data['response_text_array'] = data['response_text'].apply(lambda x: prepareString(x))
 
@@ -68,7 +82,6 @@ def generateVocab(pandasSeries):
     return list(set(vocab))
 
 # ------------------- CREATION OF MODEL -------------------#
-
 # print(data_train['response_text_array'])
 # train_vocab = generateVocab(data_train['response_text_array']) # remove if using glove
 
@@ -76,4 +89,5 @@ def generateVocab(pandasSeries):
 model = DLmodel()
 model.train(data_train)
 
-results = model.predict(data_dev)
+# results = model.predict(data_dev)
+results = model.computeDevAcc(data_dev)
