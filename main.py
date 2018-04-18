@@ -18,6 +18,8 @@ def prepareString(string):
     string = string.replace('(','')
     string = string.replace(')','')
     string = string.replace(',','')
+    string = string.replace('\/','')
+    strint = string.replace('\\','')
     string = string.lower()
     stringArr = string.split(' ')
     return stringArr
@@ -68,9 +70,10 @@ def generateVocab(pandasSeries):
 # ------------------- CREATION OF MODEL -------------------#
 
 # print(data_train['response_text_array'])
-train_vocab = generateVocab(data_train['response_text_array']) # remove if using glove
+# train_vocab = generateVocab(data_train['response_text_array']) # remove if using glove
 
-model = DLmodel(train_vocab) # change to not need train_vocab when using glove
+# model = DLmodel(train_vocab) # change to not need train_vocab when using glove
+model = DLmodel()
 model.train(data_train)
 
 results = model.predict(data_dev)

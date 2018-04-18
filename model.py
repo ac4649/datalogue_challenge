@@ -1,29 +1,38 @@
 import dynet as dy
 import pandas as pd
-
+import csv
 
 class DLmodel():
 
-    def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
+    def loadEmbedds(self,filename,embedLength):
+        gloveEmbedds = pd.read_table(filename,sep=" ",quoting=csv.QUOTE_NONE,header=None)
+        gloveEmbedds.columns = ['word'] +  ['dim'+str(i) for i in range(50)]
+        return gloveEmbedds
+
+    # def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
+    def __init__(self):
         # vocab will be used to train the embeddings in the parameter collection
 
-        # load the glove embeddings
-
+        # load the glove pre-trained embeddings
+        EMBEDDING_SIZE = 50
+        gloveEmbedds = self.loadEmbedds('glove/glove.6B.50d.txt',EMBEDDING_SIZE)
+        print(gloveEmbedds.head())
         # set vocab to be the vocab from the glove embeddings
-
-
+        vocab = gloveEmbedds['word'].values
+        print(vocab)
         # load the embeddings themselves as lookup parameters
+        
 
         self.word2idx = {w:i for i, w in  enumerate(vocab)}
         self.truth2idx = {'flagged':1, 'not_flagged':0}
 
-        EMBEDDING_SIZE = 100
         HIDDEN_DIM = 2
+        NUM_LAYERS = 1
         self.paramCollection = dy.ParameterCollection()
         self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE))
         # self.Weights = self.paramCollection.add_parameters((EMBEDDING_SIZE,HIDDEN_DIM))
         # self.bias = self.paramCollection.add_parameters((EMBEDDING_SIZE,))
-        self.rnnBuilder = dy.SimpleRNNBuilder(1,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
+        self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
 
     def forwardSequenceWithLoss(self,sequence,truth):
         dy.renew_cg()
