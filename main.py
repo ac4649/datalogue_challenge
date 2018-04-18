@@ -87,7 +87,9 @@ def generateVocab(pandasSeries):
 
 # model = DLmodel(train_vocab) # change to not need train_vocab when using glove
 model = DLmodel()
-model.train(data_train)
+unknowns, losess = model.train(data_train)
+
+pd.DataFrame(losess).to_csv('lossesEpoch.csv')
 
 # results = model.predict(data_dev)
 results = model.computeDevAcc(data_dev)

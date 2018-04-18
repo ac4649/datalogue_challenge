@@ -57,6 +57,7 @@ class DLmodel():
         print("Training")
         trainer = dy.SimpleSGDTrainer(self.paramCollection)
         allUnk = []
+        allLosses = []
         for j in trange(maxEpochs):
             epochLoss = 0
             for i, data in train_data.iterrows():
@@ -67,10 +68,12 @@ class DLmodel():
                 allUnk.extend(unkWords)
                 # if i % 10:
                 #     print(loss.value())
-                epochLoss = loss
+                epochLoss = loss.value()
+            allLosses.append(epochLoss)
 
-        print(allUnk)
-        return
+        # print(allLosses)
+        # print(allUnk)
+        return allUnk, allLosses
 
     def forwardSequenceNoLoss(self,sequence):
         dy.renew_cg()
