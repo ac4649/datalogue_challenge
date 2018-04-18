@@ -4,7 +4,7 @@
 import pandas as pd
 import dynet as dy
 
-# from model import model
+from model import DLmodel
 
 # ----------------------------- DATA LOADING ----------------------------- #
 # load the data from the file
@@ -55,20 +55,22 @@ data_train = data.sample(frac=percentTrain)
 data_dev = data.drop(data_train.index)
 
 
-# ------------------- CREATION OF MODEL -------------------#
+# ------------------- CREATION OF VOCABULARY (INCLUDING UNKNOWN TOKENS) -------------------#
 # Generate the vocabulary for the train data
 def generateVocab(pandasSeries):
     vocab = []
     for element in pandasSeries:
         for word in element:
-            if word not in vocab:
-                vocab.append(word)
+            vocab.append(word)
+    vocab.append('UNK')
+    return list(set(vocab))
 
-    return vocab
+# ------------------- CREATION OF MODEL -------------------#
 
 # print(data_train['response_text_array'])
 train_vocab = generateVocab(data_train['response_text_array'])
-train_vocab.sort()
-model = model(train_vocab)
 
-# model.train(data_train)
+model = DLmodel(train_vocab)
+model.train(data_train)
+
+results = model.predict(data_dev)
