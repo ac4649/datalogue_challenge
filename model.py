@@ -40,6 +40,10 @@ class DLmodel():
         self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
         self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
 
+    def computeSoftMax(self,output):
+
+        return dy.softmax(dy.parameter(self.Weights)*output + dy.parameter(self.bias))
+
     def forwardSequenceWithLoss(self,sequence,truth):
         dy.renew_cg()
         state = self.rnnBuilder.initial_state()
@@ -52,14 +56,15 @@ class DLmodel():
                 # exit()
             else:
                 unkWords.append(word)
-        softMax = dy.softmax(dy.parameter(self.Weights)*state.output() + dy.parameter(self.bias))
+        # softMax = dy.softmax(dy.parameter(self.Weights)*state.output() + dy.parameter(self.bias))
+        softMax = self.computeSoftMax(state.output())
         # print(softMax.value())
         # print(self.truth2idx[truth])
         # print(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]).value())
         loss.append(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]))
         return dy.esum(loss), unkWords
 
-    def train(self,train_data,maxEpochs = 1000):
+    def train(self,train_data,maxEpochs = 10):
         print("Training")
         trainer = dy.SimpleSGDTrainer(self.paramCollection)
         allUnk = []
@@ -90,11 +95,16 @@ class DLmodel():
             if (word in self.word2idx):
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
                 state = state.add_input(wordEmbedd)
-        scores = dy.log_softmax(state.output()).vec_value()
-        print(state.output())
-        print(scores)
-        # print(self.idx2truth[np.argmax(scores)])
-        return self.idx2truth[np.argmax(scores)]
+        
+        
+        softMax = self.computeSoftMax(state.output())
+        argMax = np.argmax(softMax)
+        # print(softMax.value())
+        # print(np.argmax((softMax.value())))
+        # print(self.idx2truth[np.argmax((softMax.value()))])
+        # exit()
+        # print(self.idx2truth[argMax])
+        return self.idx2truth[argMax]
 
     def predict(self,test_data):
         outputSeries = pd.Series(index=test_data.index)
@@ -105,9 +115,10 @@ class DLmodel():
         return outputSeries
 
     def computeDevAcc(self,dev_data):
+        # print(dev_data['class'].iloc[0])
         predictions = self.predict(dev_data)
-        print(predictions)
-        print(dev_data['class'])
+        # print(predictions)
+        # print(dev_data['class'])
         acc = (predictions == dev_data['class']).sum() / len(predictions)
 
         # truePos = np.sum([predictions == True and dev_data['class'] == True ])
