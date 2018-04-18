@@ -30,12 +30,14 @@ class DLmodel():
         self.truth2idx = {'flagged':1, 'not_flagged':0}
         self.idx2truth = {1:'flagged',0:'not_flagged'}
 
-        HIDDEN_DIM = 2
+        OUTPUT_DIM = 2
+
+        HIDDEN_DIM = 10
         NUM_LAYERS = 1
         self.paramCollection = dy.ParameterCollection()
         self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
-        # self.Weights = self.paramCollection.add_parameters((EMBEDDING_SIZE,HIDDEN_DIM))
-        # self.bias = self.paramCollection.add_parameters((EMBEDDING_SIZE,))
+        self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,HIDDEN_DIM))
+        self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
         self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
 
     def forwardSequenceWithLoss(self,sequence,truth):
@@ -47,13 +49,17 @@ class DLmodel():
             if (word in self.word2idx):
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
                 state = state.add_input(wordEmbedd)
-                loss.append(-dy.pickneglogsoftmax(state.output(),self.truth2idx[truth]))
+                # exit()
             else:
                 unkWords.append(word)
-
+        softMax = dy.softmax(dy.parameter(self.Weights)*state.output() + dy.parameter(self.bias))
+        # print(softMax.value())
+        # print(self.truth2idx[truth])
+        # print(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]).value())
+        loss.append(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]))
         return dy.esum(loss), unkWords
 
-    def train(self,train_data,maxEpochs = 10000):
+    def train(self,train_data,maxEpochs = 1000):
         print("Training")
         trainer = dy.SimpleSGDTrainer(self.paramCollection)
         allUnk = []
@@ -69,6 +75,7 @@ class DLmodel():
                 # if i % 10:
                 #     print(loss.value())
                 epochLoss = loss.value()
+                # exit()
             allLosses.append(epochLoss)
 
         # print(allLosses)
@@ -84,6 +91,8 @@ class DLmodel():
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
                 state = state.add_input(wordEmbedd)
         scores = dy.log_softmax(state.output()).vec_value()
+        print(state.output())
+        print(scores)
         # print(self.idx2truth[np.argmax(scores)])
         return self.idx2truth[np.argmax(scores)]
 
