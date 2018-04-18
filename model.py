@@ -4,8 +4,15 @@ import pandas as pd
 
 class DLmodel():
 
-    def __init__(self,vocab,numLayers = 1):
+    def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
         # vocab will be used to train the embeddings in the parameter collection
+
+        # load the glove embeddings
+
+        # set vocab to be the vocab from the glove embeddings
+
+
+        # load the embeddings themselves as lookup parameters
 
         self.word2idx = {w:i for i, w in  enumerate(vocab)}
         self.truth2idx = {'flagged':1, 'not_flagged':0}
@@ -53,7 +60,6 @@ class DLmodel():
     def predict(self,train_data):
         outputSeries = pd.Series(index=train_data.index)
         for i, data in train_data.iterrows():
-            #compute the loss
             outputSeries.loc[i] = self.forwardSequenceNoLoss(data['response_text_array'])
             
         return
