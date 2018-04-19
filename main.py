@@ -15,26 +15,35 @@ data = pd.read_csv('deepnlp/Sheet_1.csv')
 # remove extraneous columsn from the dataframe
 data = data.drop(['Unnamed: 3','Unnamed: 4','Unnamed: 5','Unnamed: 6','Unnamed: 7'],axis=1)
 
+
 def prepareString(string):
     # print(string)
     string = re.sub(r'[^A-Za-z0-9\s\']', ' ', string)
+    string = string.replace('\'',' \'')
     string = string.lower()
     stringArr = string.split(' ')
+
     # print(stringArr)
     newArray = []
+    # numRemovedWords = 0
+    # numWordsTotal = len(stringArr)
     # now do some stemming, lemmatization and removal of stop words
     for word in stringArr:
         includeWord = True
         if word == '':
             includeWord = False
 
+        if word == '\'t':
+            includeWord = False
+
         if word in nltk.corpus.stopwords.words('english'):
             includeWord = False
+            # numRemovedWords += 1
 
         if includeWord == True:
             newArray.append(word)
 
-    # print(newArray)
+    # print(numRemovedWords/numWordsTotal)
     # exit()
     return newArray
 
@@ -87,7 +96,8 @@ def generateVocab(pandasSeries):
 
 # model = DLmodel(train_vocab) # change to not need train_vocab when using glove
 model = DLmodel()
-unknowns, losess = model.train(data_train,maxEpochs = 100)
+unknowns, losess = model.train(data_train,maxEpochs = 1)
+print(unknowns)
 
 pd.DataFrame(losess).to_csv('lossesEpoch.csv')
 

@@ -22,9 +22,8 @@ class DLmodel():
         # set vocab to be the vocab from the glove embeddings
         vocab = gloveEmbedds['word'].values
         embeddings = gloveEmbedds.drop('word',axis=1)
-        print(vocab)
+        # print(vocab)
         # load the embeddings themselves as lookup parameters
-        
 
         self.word2idx = {w:i for i, w in  enumerate(vocab)}
         self.truth2idx = {'flagged':1, 'not_flagged':0}
@@ -35,34 +34,43 @@ class DLmodel():
         HIDDEN_DIM = 10
         NUM_LAYERS = 1
         self.paramCollection = dy.ParameterCollection()
-        self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
+        # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
+        self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
         self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,HIDDEN_DIM))
         self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
         self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
 
-    def computeSoftMax(self,output):
+    def computeScore(self,output):
 
         return dy.softmax(dy.parameter(self.Weights)*output + dy.parameter(self.bias))
 
     def forwardSequenceWithLoss(self,sequence,truth):
         dy.renew_cg()
         state = self.rnnBuilder.initial_state()
-        loss = []
+        # loss = []
         unkWords = []
         for word in sequence:
             if (word in self.word2idx):
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
+                # wordEmbedd = dy.const_lookup(self.paramCollection,self.wordEmbeddings,self.word2idx[word])
                 state = state.add_input(wordEmbedd)
+                print(state.prev())
                 # exit()
             else:
                 unkWords.append(word)
         # softMax = dy.softmax(dy.parameter(self.Weights)*state.output() + dy.parameter(self.bias))
-        softMax = self.computeSoftMax(state.output())
+        score = self.computeScore(state.output())
+        # print(score.value())
+        # print(dy.softmax(score).value())
+        # exit()
         # print(softMax.value())
         # print(self.truth2idx[truth])
-        # print(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]).value())
-        loss.append(-dy.pickneglogsoftmax(softMax,self.truth2idx[truth]))
-        return dy.esum(loss), unkWords
+
+        loss = -dy.log(dy.pick(score,self.truth2idx[truth]))
+        # loss.append([np.abs(self.truth2idx[truth] - softMax.value()[i] for i in range(len(self.truth2idx)))])
+        # print(loss.value())
+        # exit()
+        return loss, unkWords
 
     def train(self,train_data,maxEpochs = 10):
         print("Training")
@@ -74,12 +82,11 @@ class DLmodel():
             for i, data in train_data.iterrows():
                 #compute the loss
                 loss, unkWords = self.forwardSequenceWithLoss(data['response_text_array'],data['class'])
+                epochLoss = loss.value()
                 loss.backward()
                 trainer.update()
+
                 allUnk.extend(unkWords)
-                # if i % 10:
-                #     print(loss.value())
-                epochLoss = loss.value()
                 # exit()
             allLosses.append(epochLoss)
 
@@ -94,10 +101,11 @@ class DLmodel():
         for word in sequence:
             if (word in self.word2idx):
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
+                # wordEmbedd = dy.const_lookup(self.paramCollection,self.wordEmbeddings,self.word2idx[word])
                 state = state.add_input(wordEmbedd)
         
         
-        softMax = self.computeSoftMax(state.output())
+        softMax = self.computeScore(state.output())
         argMax = np.argmax(softMax)
         # print(softMax.value())
         # print(np.argmax((softMax.value())))
@@ -121,13 +129,19 @@ class DLmodel():
         # print(dev_data['class'])
         acc = (predictions == dev_data['class']).sum() / len(predictions)
 
-        # truePos = np.sum([predictions == True and dev_data['class'] == True ])
-        # trueNeg = np.sum([predictions == False and dev_data['class'] == False ])
-        # falsePos = np.sum([predictions == True and dev_data['class'] == False ])
-        # falseNeg = np.sum([predictions == False and dev_data['class'] == True ])
+        trueFlagged = dev_data['class'][dev_data['class'] == self.idx2truth[1]]
+        trueFlaggedPredictions = predictions[dev_data['class'] == self.idx2truth[1]]
+
+        trueNotFlagged = dev_data['class'][dev_data['class'] == self.idx2truth[0]]
+        trueNotFlaggedPredictions = predictions[dev_data['class'] == self.idx2truth[0]]
+
+        truePos = np.sum(trueFlagged == trueFlaggedPredictions)
+        trueNeg = np.sum(trueNotFlagged == trueNotFlaggedPredictions)
+        falsePos = np.sum(trueFlagged != trueFlaggedPredictions)
+        falseNeg = np.sum(trueNotFlagged != trueNotFlaggedPredictions)
         print(acc)
-        # print(truePos)
-        # print(trueNeg)
-        # print(falsePos)
-        # print(falseNeg)
+        print(truePos)
+        print(trueNeg)
+        print(falsePos)
+        print(falseNeg)
 
