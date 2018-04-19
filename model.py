@@ -42,35 +42,26 @@ class DLmodel():
 
     def computeScore(self,output):
 
-        return dy.softmax(dy.parameter(self.Weights)*output + dy.parameter(self.bias))
+        return dy.parameter(self.Weights)*output + dy.parameter(self.bias)
 
-    def forwardSequenceWithLoss(self,sequence,truth):
+    def forwardSequence(self,sequence):
         dy.renew_cg()
         state = self.rnnBuilder.initial_state()
+
         # loss = []
         unkWords = []
+        losses = []
         for word in sequence:
             if (word in self.word2idx):
                 wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
                 # wordEmbedd = dy.const_lookup(self.paramCollection,self.wordEmbeddings,self.word2idx[word])
                 state = state.add_input(wordEmbedd)
-                print(state.prev())
-                # exit()
             else:
                 unkWords.append(word)
-        # softMax = dy.softmax(dy.parameter(self.Weights)*state.output() + dy.parameter(self.bias))
-        score = self.computeScore(state.output())
-        # print(score.value())
-        # print(dy.softmax(score).value())
-        # exit()
-        # print(softMax.value())
-        # print(self.truth2idx[truth])
 
-        loss = -dy.log(dy.pick(score,self.truth2idx[truth]))
-        # loss.append([np.abs(self.truth2idx[truth] - softMax.value()[i] for i in range(len(self.truth2idx)))])
-        # print(loss.value())
-        # exit()
-        return loss, unkWords
+        score = self.computeScore(state.output())
+
+        return score, unkWords
 
     def train(self,train_data,maxEpochs = 10):
         print("Training")
@@ -81,43 +72,30 @@ class DLmodel():
             epochLoss = 0
             for i, data in train_data.iterrows():
                 #compute the loss
-                loss, unkWords = self.forwardSequenceWithLoss(data['response_text_array'],data['class'])
-                epochLoss = loss.value()
+                score, unkWords = self.forwardSequence(data['response_text_array'])
+                # print(self.truth2idx[data['class']])
+                # print(dy.softmax(score).value())
+                loss = dy.pickneglogsoftmax(score,self.truth2idx[data['class']])
+                epochLoss += loss.value()
                 loss.backward()
                 trainer.update()
 
                 allUnk.extend(unkWords)
                 # exit()
             allLosses.append(epochLoss)
+            # print(epochLoss)
 
-        # print(allLosses)
+        print(allLosses[:-1])
         # print(allUnk)
         return allUnk, allLosses
-
-    def forwardSequenceNoLoss(self,sequence):
-        dy.renew_cg()
-        state = self.rnnBuilder.initial_state()
-        loss = []
-        for word in sequence:
-            if (word in self.word2idx):
-                wordEmbedd = self.wordEmbeddings[self.word2idx[word]]
-                # wordEmbedd = dy.const_lookup(self.paramCollection,self.wordEmbeddings,self.word2idx[word])
-                state = state.add_input(wordEmbedd)
-        
-        
-        softMax = self.computeScore(state.output())
-        argMax = np.argmax(softMax)
-        # print(softMax.value())
-        # print(np.argmax((softMax.value())))
-        # print(self.idx2truth[np.argmax((softMax.value()))])
-        # exit()
-        # print(self.idx2truth[argMax])
-        return self.idx2truth[argMax]
 
     def predict(self,test_data):
         outputSeries = pd.Series(index=test_data.index)
         for i, data in test_data.iterrows():
-            outputSeries.loc[i] = self.forwardSequenceNoLoss(data['response_text_array'])
+            probs, unkWords = self.forwardSequence(data['response_text_array'])
+            print(dy.softmax(probs).value())
+            print(np.argmax(dy.softmax(probs).value()))
+            outputSeries.loc[i] = np.argmax(dy.softmax(probs).value())
         
         # print(outputSeries)
         return outputSeries
