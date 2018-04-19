@@ -93,9 +93,9 @@ class DLmodel():
         outputSeries = pd.Series(index=test_data.index)
         for i, data in test_data.iterrows():
             probs, unkWords = self.forwardSequence(data['response_text_array'])
-            print(dy.softmax(probs).value())
-            print(np.argmax(dy.softmax(probs).value()))
-            outputSeries.loc[i] = np.argmax(dy.softmax(probs).value())
+            # print(dy.softmax(probs).value())
+            # print(np.argmax(dy.softmax(probs).value()))
+            outputSeries.loc[i] = self.idx2truth[np.argmax(dy.softmax(probs).value())]
         
         # print(outputSeries)
         return outputSeries
