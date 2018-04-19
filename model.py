@@ -16,7 +16,7 @@ class DLmodel():
         # vocab will be used to train the embeddings in the parameter collection
 
         # load the glove pre-trained embeddings
-        print("Loading Embeddings")
+        # print("Loading Embeddings")
         self.EMBEDDING_SIZE = embedding_size
         gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
         # set vocab to be the vocab from the glove embeddings
@@ -75,11 +75,11 @@ class DLmodel():
 
     def train(self,train_data,maxEpochs = 10):
         self.trainEpochs = maxEpochs
-        print("Training")
+        # print("Training")
         trainer = dy.SimpleSGDTrainer(self.paramCollection)
         allUnk = []
         allLosses = []
-        for j in trange(self.trainEpochs):
+        for j in trange(self.trainEpochs,desc="Training: "):
             epochLoss = 0
             for i, data in train_data.iterrows():
                 #compute the loss
@@ -96,7 +96,7 @@ class DLmodel():
             allLosses.append(epochLoss)
             # print(epochLoss)
 
-        print("Final Loss: " + str(allLosses[maxEpochs-1]))
+        # print("Final Loss: " + str(allLosses[maxEpochs-1]))
         self.trainLoss = allLosses[maxEpochs-1]
         # print(allUnk)
         return allUnk, allLosses

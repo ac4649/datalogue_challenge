@@ -5,7 +5,7 @@ import pandas as pd
 import dynet as dy
 import nltk
 import re
-
+from tqdm import *
 from model import DLmodel
 
 # ----------------------------- DATA LOADING ----------------------------- #
@@ -123,11 +123,11 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
 
 # Run the model multiple times with a given set of parameters to get the best parameters on average 
 # (no matter what the training )
-numRuns = 30
-for j in range(0,10):
+numRuns = 10
+for j in trange(0,10,desc='Param Variation'):
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
-    for i in range(0,numRuns):
-        print("Run: " +str(i))
+    for i in trange(0,numRuns,desc="Param Runs"):
+        # print("Run: " +str(i))
         preds, stats, params = runModel(hidden_dim = j, num_layers = 1, embedding_size = 50, embedding_file = 'glove/glove.6B.50d.txt',maxEpochs = 400)
         # overallModelStats.append((stats,params))
         # curRun = pd.Series([param for param in params]+[stats for i in stats])
