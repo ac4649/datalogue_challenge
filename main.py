@@ -124,9 +124,10 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
 # Run the model multiple times with a given set of parameters to get the best parameters on average 
 # (no matter what the training )
 numRuns = 10
-for j in tqdm([50,100,200,300],desc='Param Variation'):
+for j in tqdm([300],desc='Param Variation'):
+# for j in trange(0,10,desc='Param Variation'):
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
-    for i in trange(0,numRuns,desc="Param Runs1"):
+    for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
         preds, stats, params = runModel(hidden_dim = 2, num_layers = 1, embedding_size = j, embedding_file = 'glove/glove.6B.'+str(j) + 'd.txt',maxEpochs = 400)
         # overallModelStats.append((stats,params))
