@@ -97,6 +97,7 @@ class DLmodel():
             # print(epochLoss)
 
         print("Final Loss: " + str(allLosses[maxEpochs-1]))
+        self.trainLoss = allLosses[maxEpochs-1]
         # print(allUnk)
         return allUnk, allLosses
 
@@ -134,6 +135,7 @@ class DLmodel():
             print("True Negative #: " + str(trueNeg))
             print("False Positive #: " + str(falsePos))
             print("False Negative #: " + str(falseNeg))
+            print("Training Loss: " + str(self.trainLoss))
 
-        return predictions, [acc, truePos, trueNeg, falsePos, falseNeg]
+        return predictions, [acc, truePos, trueNeg, falsePos, falseNeg, self.trainLoss]
 

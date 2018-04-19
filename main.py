@@ -123,8 +123,8 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
 
 # Run the model multiple times with a given set of parameters to get the best parameters on average 
 # (no matter what the training )
-numRuns = 10
-overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+numRuns = 30
+overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
 for i in range(0,numRuns):
     preds, stats, params = runModel(hidden_dim = 1, num_layers = 1, embedding_size = 50, embedding_file = 'glove/glove.6B.50d.txt',maxEpochs = 400)
@@ -134,6 +134,7 @@ for i in range(0,numRuns):
     overallModelStats.iloc[i]['num_layers'] = params[1]
     overallModelStats.iloc[i]['embeddingSize'] = params[2]
     overallModelStats.iloc[i]['hiddenDim'] = params[3]
+    overallModelStats.iloc[i]['train_loss'] = stats[5]
 
     overallModelStats.iloc[i]['accuracy'] = stats[0]
     overallModelStats.iloc[i]['truePos'] = stats[1]
@@ -143,3 +144,4 @@ for i in range(0,numRuns):
 
 print(overallModelStats)
 print(overallModelStats.mean())
+overallModelStats.to_csv('base_stats.csv')
