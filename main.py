@@ -124,24 +124,25 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
 # Run the model multiple times with a given set of parameters to get the best parameters on average 
 # (no matter what the training )
 numRuns = 30
-overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+for j in range(0,10):
+    overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+    for i in range(0,numRuns):
+        print("Run: " +str(i))
+        preds, stats, params = runModel(hidden_dim = j, num_layers = 1, embedding_size = 50, embedding_file = 'glove/glove.6B.50d.txt',maxEpochs = 400)
+        # overallModelStats.append((stats,params))
+        # curRun = pd.Series([param for param in params]+[stats for i in stats])
+        overallModelStats.iloc[i]['maxEpochs'] = params[0]
+        overallModelStats.iloc[i]['num_layers'] = params[1]
+        overallModelStats.iloc[i]['embeddingSize'] = params[2]
+        overallModelStats.iloc[i]['hiddenDim'] = params[3]
+        overallModelStats.iloc[i]['train_loss'] = stats[5]
 
-for i in range(0,numRuns):
-    preds, stats, params = runModel(hidden_dim = 1, num_layers = 1, embedding_size = 50, embedding_file = 'glove/glove.6B.50d.txt',maxEpochs = 400)
-    # overallModelStats.append((stats,params))
-    # curRun = pd.Series([param for param in params]+[stats for i in stats])
-    overallModelStats.iloc[i]['maxEpochs'] = params[0]
-    overallModelStats.iloc[i]['num_layers'] = params[1]
-    overallModelStats.iloc[i]['embeddingSize'] = params[2]
-    overallModelStats.iloc[i]['hiddenDim'] = params[3]
-    overallModelStats.iloc[i]['train_loss'] = stats[5]
-
-    overallModelStats.iloc[i]['accuracy'] = stats[0]
-    overallModelStats.iloc[i]['truePos'] = stats[1]
-    overallModelStats.iloc[i]['trueNeg'] = stats[2]
-    overallModelStats.iloc[i]['falsePos'] = stats[3]
-    overallModelStats.iloc[i]['falseNeg'] = stats[4]
+        overallModelStats.iloc[i]['accuracy'] = stats[0]
+        overallModelStats.iloc[i]['truePos'] = stats[1]
+        overallModelStats.iloc[i]['trueNeg'] = stats[2]
+        overallModelStats.iloc[i]['falsePos'] = stats[3]
+        overallModelStats.iloc[i]['falseNeg'] = stats[4]
+    overallModelStats.to_csv('hidden_dimm_stats'+str(j)+'.csv')
 
 print(overallModelStats)
 print(overallModelStats.mean())
-overallModelStats.to_csv('base_stats.csv')
