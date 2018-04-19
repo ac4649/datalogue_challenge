@@ -12,13 +12,13 @@ class DLmodel():
         return gloveEmbedds
 
     # def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
-    def __init__(self):
+    def __init__(self, hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt'):
         # vocab will be used to train the embeddings in the parameter collection
 
         # load the glove pre-trained embeddings
         print("Loading Embeddings")
-        self.EMBEDDING_SIZE = 100
-        gloveEmbedds = self.loadEmbedds('glove/glove.6B.100d.txt',self.EMBEDDING_SIZE)
+        self.EMBEDDING_SIZE = embedding_size
+        gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
         # set vocab to be the vocab from the glove embeddings
         vocab = gloveEmbedds['word'].values
         embeddings = gloveEmbedds.drop('word',axis=1)
@@ -31,18 +31,18 @@ class DLmodel():
 
         OUTPUT_DIM = 2
 
-        self.HIDDEN_DIM = 50
-        NUM_LAYERS = 1
+        self.HIDDEN_DIM = hidden_dim
+        self.NUM_LAYERS = num_layers
         self.paramCollection = dy.ParameterCollection()
         # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
         self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
         self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
         self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
-        self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
+        self.rnnBuilder = dy.SimpleRNNBuilder(self.NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
 
 
     def getModelParams(self):
-        return [self.EMBEDDING_SIZE, self.HIDDEN_DIM]
+        return [self.trainEpochs,self.NUM_LAYERS, self.EMBEDDING_SIZE, self.HIDDEN_DIM]
 
     def loadModel(self,filePath):
         self.paramCollection.populate(filePath)
@@ -74,11 +74,12 @@ class DLmodel():
         return score, unkWords
 
     def train(self,train_data,maxEpochs = 10):
+        self.trainEpochs = maxEpochs
         print("Training")
         trainer = dy.SimpleSGDTrainer(self.paramCollection)
         allUnk = []
         allLosses = []
-        for j in trange(maxEpochs):
+        for j in trange(self.trainEpochs):
             epochLoss = 0
             for i, data in train_data.iterrows():
                 #compute the loss
@@ -110,7 +111,7 @@ class DLmodel():
         # print(outputSeries)
         return outputSeries
 
-    def computeDevAcc(self,dev_data):
+    def computeDevAcc(self,dev_data,printStats = True):
         # print(dev_data['class'].iloc[0])
         predictions = self.predict(dev_data)
         # print(predictions)
@@ -127,11 +128,12 @@ class DLmodel():
         trueNeg = np.sum(trueNotFlagged == trueNotFlaggedPredictions)
         falsePos = np.sum(trueFlagged != trueFlaggedPredictions)
         falseNeg = np.sum(trueNotFlagged != trueNotFlaggedPredictions)
-        print("Accuracy: " +str(acc))
-        print("True Positive #: " + str(truePos))
-        print("True Negative #: " + str(trueNeg))
-        print("False Positive #: " + str(falsePos))
-        print("False Negative #: " + str(falseNeg))
+        if printStats:
+            print("Accuracy: " +str(acc))
+            print("True Positive #: " + str(truePos))
+            print("True Negative #: " + str(trueNeg))
+            print("False Positive #: " + str(falsePos))
+            print("False Negative #: " + str(falseNeg))
 
         return predictions, [acc, truePos, trueNeg, falsePos, falseNeg]
 

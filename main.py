@@ -63,22 +63,25 @@ data['response_text_array'] = data['response_text'].apply(lambda x: prepareStrin
 #               must be classified as flagged for assistance or not_flagged.
 
 
-# looking at statistics for the class column in the dataset to see if it is a roughly even dataset 
-print(data['class'].describe())
-# the fact that the frequency of the not_flagged is 55 over the 80 shows an
-#  imbalance toward the not_flagged class.
+def describeData():
+    # looking at statistics for the class column in the dataset to see if it is a roughly even dataset 
+    print(data['class'].describe())
+    # the fact that the frequency of the not_flagged is 55 over the 80 shows an
+    #  imbalance toward the not_flagged class.
 
 
 # ------------------- SEPARATION INTO TRAIN AND TEST SPLITS -------------------#
-# train on a certain percentage of the data
-percentTrain = 0.7
+def splitDataSet(data):
+    # train on a certain percentage of the data
+    percentTrain = 0.7
 
-# sample a fraction equivalent to the percent rain from the data
-data_train = data.sample(frac=percentTrain) 
-# print(data_train.shape)
-# the rest of the data will be used as dev
-data_dev = data.drop(data_train.index)
-# print(data_dev.shape)
+    # sample a fraction equivalent to the percent rain from the data
+    data_train = data.sample(frac=percentTrain) 
+    # print(data_train.shape)
+    # the rest of the data will be used as dev
+    data_dev = data.drop(data_train.index)
+    # print(data_dev.shape)
+    return data_train, data_dev
 
 
 # ------------------- CREATION OF VOCABULARY (INCLUDING UNKNOWN TOKENS) -------------------#
@@ -96,17 +99,47 @@ def generateVocab(pandasSeries):
 # train_vocab = generateVocab(data_train['response_text_array']) # remove if using glove
 
 # model = DLmodel(train_vocab) # change to not need train_vocab when using glove
-model = DLmodel()
-unknowns, losess = model.train(data_train,maxEpochs = 100)
-# print(unknowns)
 
-pd.DataFrame(losess).to_csv('lossesEpoch.csv')
+def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt', maxEpochs = 200, saveModel = False):
+    
+    data_train, data_dev = splitDataSet(data)
+    model = DLmodel(hidden_dim = hidden_dim, num_layers = num_layers, embedding_size = embedding_size, embedding_file = embedding_file)
+    unknowns, losess = model.train(data_train,maxEpochs = maxEpochs)
+    # print(unknowns)
 
-# results = model.predict(data_dev)
-predictions, stats = model.computeDevAcc(data_dev)
+    pd.DataFrame(losess).to_csv('lossesEpoch.csv')
 
-params = model.getModelParams()
+    # results = model.predict(data_dev)
+    predictions, stats = model.computeDevAcc(data_dev,printStats=False)
 
-model.saveModel('curModel.model')
-print(stats)
-print(params)
+    params = model.getModelParams()
+
+    if saveModel:
+        model.saveModel('curModel.model')
+    # print(stats)
+    # print(params)
+    return predictions, stats, params
+
+
+# Run the model multiple times with a given set of parameters to get the best parameters on average 
+# (no matter what the training )
+numRuns = 10
+overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+
+for i in range(0,numRuns):
+    preds, stats, params = runModel(hidden_dim = 1, num_layers = 1, embedding_size = 50, embedding_file = 'glove/glove.6B.50d.txt',maxEpochs = 400)
+    # overallModelStats.append((stats,params))
+    # curRun = pd.Series([param for param in params]+[stats for i in stats])
+    overallModelStats.iloc[i]['maxEpochs'] = params[0]
+    overallModelStats.iloc[i]['num_layers'] = params[1]
+    overallModelStats.iloc[i]['embeddingSize'] = params[2]
+    overallModelStats.iloc[i]['hiddenDim'] = params[3]
+
+    overallModelStats.iloc[i]['accuracy'] = stats[0]
+    overallModelStats.iloc[i]['truePos'] = stats[1]
+    overallModelStats.iloc[i]['trueNeg'] = stats[2]
+    overallModelStats.iloc[i]['falsePos'] = stats[3]
+    overallModelStats.iloc[i]['falseNeg'] = stats[4]
+
+print(overallModelStats)
+print(overallModelStats.mean())
