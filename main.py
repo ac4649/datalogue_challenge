@@ -124,12 +124,12 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
 # Run the model multiple times with a given set of parameters to get the best parameters on average 
 # (no matter what the training )
 numRuns = 10
-for j in tqdm([300],desc='Param Variation'):
+for j in tqdm([1,100,150,200,250,300,350,400,450,500],desc='Param Variation'):
 # for j in trange(0,10,desc='Param Variation'):
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
     for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
-        preds, stats, params = runModel(hidden_dim = 2, num_layers = 1, embedding_size = j, embedding_file = 'glove/glove.6B.'+str(j) + 'd.txt',maxEpochs = 400)
+        preds, stats, params = runModel(hidden_dim = 2, num_layers = 1, embedding_size = 300, embedding_file = 'glove/glove.6B.300d.txt',maxEpochs = j)
         # overallModelStats.append((stats,params))
         # curRun = pd.Series([param for param in params]+[stats for i in stats])
         overallModelStats.iloc[i]['maxEpochs'] = params[0]
@@ -143,7 +143,7 @@ for j in tqdm([300],desc='Param Variation'):
         overallModelStats.iloc[i]['trueNeg'] = stats[2]
         overallModelStats.iloc[i]['falsePos'] = stats[3]
         overallModelStats.iloc[i]['falseNeg'] = stats[4]
-    overallModelStats.to_csv('embedd_size_stats'+str(j)+'.csv')
+    overallModelStats.to_csv('train_maxEpoch_stats'+str(j)+'.csv')
 
 print(overallModelStats)
 print(overallModelStats.mean())
