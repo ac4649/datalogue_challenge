@@ -17,8 +17,8 @@ class DLmodel():
 
         # load the glove pre-trained embeddings
         print("Loading Embeddings")
-        EMBEDDING_SIZE = 50
-        gloveEmbedds = self.loadEmbedds('glove/glove.6B.50d.txt',EMBEDDING_SIZE)
+        self.EMBEDDING_SIZE = 100
+        gloveEmbedds = self.loadEmbedds('glove/glove.6B.100d.txt',self.EMBEDDING_SIZE)
         # set vocab to be the vocab from the glove embeddings
         vocab = gloveEmbedds['word'].values
         embeddings = gloveEmbedds.drop('word',axis=1)
@@ -31,14 +31,24 @@ class DLmodel():
 
         OUTPUT_DIM = 2
 
-        HIDDEN_DIM = 10
+        self.HIDDEN_DIM = 50
         NUM_LAYERS = 1
         self.paramCollection = dy.ParameterCollection()
         # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
         self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
-        self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,HIDDEN_DIM))
+        self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
         self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
-        self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,EMBEDDING_SIZE,HIDDEN_DIM,self.paramCollection)
+        self.rnnBuilder = dy.SimpleRNNBuilder(NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
+
+
+    def getModelParams(self):
+        return [self.EMBEDDING_SIZE, self.HIDDEN_DIM]
+
+    def loadModel(self,filePath):
+        self.paramCollection.populate(filePath)
+
+    def saveModel(self,filePath):
+        self.paramCollection.save(filePath)
 
     def computeScore(self,output):
 
@@ -85,7 +95,7 @@ class DLmodel():
             allLosses.append(epochLoss)
             # print(epochLoss)
 
-        print(allLosses[:-1])
+        print("Final Loss: " + str(allLosses[maxEpochs-1]))
         # print(allUnk)
         return allUnk, allLosses
 
@@ -117,9 +127,11 @@ class DLmodel():
         trueNeg = np.sum(trueNotFlagged == trueNotFlaggedPredictions)
         falsePos = np.sum(trueFlagged != trueFlaggedPredictions)
         falseNeg = np.sum(trueNotFlagged != trueNotFlaggedPredictions)
-        print(acc)
-        print(truePos)
-        print(trueNeg)
-        print(falsePos)
-        print(falseNeg)
+        print("Accuracy: " +str(acc))
+        print("True Positive #: " + str(truePos))
+        print("True Negative #: " + str(trueNeg))
+        print("False Positive #: " + str(falsePos))
+        print("False Negative #: " + str(falseNeg))
+
+        return predictions, [acc, truePos, trueNeg, falsePos, falseNeg]
 

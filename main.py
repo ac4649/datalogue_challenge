@@ -65,19 +65,20 @@ data['response_text_array'] = data['response_text'].apply(lambda x: prepareStrin
 
 # looking at statistics for the class column in the dataset to see if it is a roughly even dataset 
 print(data['class'].describe())
-# the fact that the frequency of the not_flagged is 55 over the 80 shows a slight
+# the fact that the frequency of the not_flagged is 55 over the 80 shows an
 #  imbalance toward the not_flagged class.
 
 
 # ------------------- SEPARATION INTO TRAIN AND TEST SPLITS -------------------#
 # train on a certain percentage of the data
-percentTrain = 0.6
+percentTrain = 0.7
 
 # sample a fraction equivalent to the percent rain from the data
 data_train = data.sample(frac=percentTrain) 
-
+# print(data_train.shape)
 # the rest of the data will be used as dev
 data_dev = data.drop(data_train.index)
+# print(data_dev.shape)
 
 
 # ------------------- CREATION OF VOCABULARY (INCLUDING UNKNOWN TOKENS) -------------------#
@@ -97,9 +98,15 @@ def generateVocab(pandasSeries):
 # model = DLmodel(train_vocab) # change to not need train_vocab when using glove
 model = DLmodel()
 unknowns, losess = model.train(data_train,maxEpochs = 100)
-print(unknowns)
+# print(unknowns)
 
 pd.DataFrame(losess).to_csv('lossesEpoch.csv')
 
 # results = model.predict(data_dev)
-results = model.computeDevAcc(data_dev)
+predictions, stats = model.computeDevAcc(data_dev)
+
+params = model.getModelParams()
+
+model.saveModel('curModel.model')
+print(stats)
+print(params)
