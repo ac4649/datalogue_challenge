@@ -166,15 +166,18 @@ def runRandomForestModel(n_estimators = 2):
     return stats
 
 numRuns = 10
-randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['accuracy','truePos','trueNeg','falsePos','falseNeg'])
+randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-for i in trange(numRuns,desc='running model'):
-    curStats = runRandomForestModel(n_estimators = 2)
-    randForestStats.iloc[i]['accuracy'] = curStats[0]
-    randForestStats.iloc[i]['truePos'] = curStats[1]
-    randForestStats.iloc[i]['trueNeg'] = curStats[2]
-    randForestStats.iloc[i]['falsePos'] = curStats[3]
-    randForestStats.iloc[i]['falseNeg'] = curStats[4]
+for j in trange(20,desc='Chaning parameters'):
+    for i in trange(numRuns,desc='Running Models'):
+        curStats = runRandomForestModel(n_estimators = j)
+        randForestStats.iloc[i]['accuracy'] = curStats[0]
+        randForestStats.iloc[i]['truePos'] = curStats[1]
+        randForestStats.iloc[i]['trueNeg'] = curStats[2]
+        randForestStats.iloc[i]['falsePos'] = curStats[3]
+        randForestStats.iloc[i]['falseNeg'] = curStats[4]
+        randForestStats.iloc[i]['n_estimators'] = j
 
-print(randForestStats)
-print(randForestStats.mean())
+    # print(randForestStats)
+    # print(randForestStats.mean())
+    randForestStats.to_csv('randomFores_'+str(j)+'_estimators')
