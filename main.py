@@ -6,7 +6,8 @@ import dynet as dy
 import nltk
 import re
 from tqdm import *
-from model import DLmodel
+from rnnModel import RNNmodel
+from randomForestModel import randomForestModel
 
 # ----------------------------- DATA LOADING ----------------------------- #
 # load the data from the file
@@ -98,12 +99,12 @@ def generateVocab(pandasSeries):
 # print(data_train['response_text_array'])
 # train_vocab = generateVocab(data_train['response_text_array']) # remove if using glove
 
-# model = DLmodel(train_vocab) # change to not need train_vocab when using glove
+# model = RNNmodel(train_vocab) # change to not need train_vocab when using glove
 
-def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt', maxEpochs = 200, saveModel = False):
+def runRNNModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt', maxEpochs = 200, saveModel = False):
     
     data_train, data_dev = splitDataSet(data)
-    model = DLmodel(hidden_dim = hidden_dim, num_layers = num_layers, embedding_size = embedding_size, embedding_file = embedding_file)
+    model = RNNmodel(hidden_dim = hidden_dim, num_layers = num_layers, embedding_size = embedding_size, embedding_file = embedding_file)
     unknowns, losess = model.train(data_train,maxEpochs = maxEpochs)
     # print(unknowns)
 
@@ -120,30 +121,49 @@ def runModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_fil
     # print(params)
     return predictions, stats, params
 
+def runRNNTrials():
+    # Run the model multiple times with a given set of parameters to get the best parameters on average 
+    # (no matter what the training )
+    numRuns = 10
+    for j in tqdm([500],desc='Param Variation'):
+    # for j in trange(0,10,desc='Param Variation'):
+        overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+        for i in trange(0,numRuns,desc="Param Runs "):
+            # print("Run: " +str(i))
+            preds, stats, params = runRNNModel(hidden_dim = 2, num_layers = 1, embedding_size = 300, embedding_file = 'glove/glove.6B.300d.txt',maxEpochs = j)
+            # overallModelStats.append((stats,params))
+            # curRun = pd.Series([param for param in params]+[stats for i in stats])
+            overallModelStats.iloc[i]['maxEpochs'] = params[0]
+            overallModelStats.iloc[i]['num_layers'] = params[1]
+            overallModelStats.iloc[i]['embeddingSize'] = params[2]
+            overallModelStats.iloc[i]['hiddenDim'] = params[3]
+            overallModelStats.iloc[i]['train_loss'] = stats[5]
 
-# Run the model multiple times with a given set of parameters to get the best parameters on average 
-# (no matter what the training )
-numRuns = 100
-for j in tqdm([500],desc='Param Variation'):
-# for j in trange(0,10,desc='Param Variation'):
-    overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
-    for i in trange(0,numRuns,desc="Param Runs "):
-        # print("Run: " +str(i))
-        preds, stats, params = runModel(hidden_dim = 2, num_layers = 1, embedding_size = 300, embedding_file = 'glove/glove.6B.300d.txt',maxEpochs = j)
-        # overallModelStats.append((stats,params))
-        # curRun = pd.Series([param for param in params]+[stats for i in stats])
-        overallModelStats.iloc[i]['maxEpochs'] = params[0]
-        overallModelStats.iloc[i]['num_layers'] = params[1]
-        overallModelStats.iloc[i]['embeddingSize'] = params[2]
-        overallModelStats.iloc[i]['hiddenDim'] = params[3]
-        overallModelStats.iloc[i]['train_loss'] = stats[5]
+            overallModelStats.iloc[i]['accuracy'] = stats[0]
+            overallModelStats.iloc[i]['truePos'] = stats[1]
+            overallModelStats.iloc[i]['trueNeg'] = stats[2]
+            overallModelStats.iloc[i]['falsePos'] = stats[3]
+            overallModelStats.iloc[i]['falseNeg'] = stats[4]
+        overallModelStats.to_csv('train_maxEpoch_stats'+str(j)+'.csv')
 
-        overallModelStats.iloc[i]['accuracy'] = stats[0]
-        overallModelStats.iloc[i]['truePos'] = stats[1]
-        overallModelStats.iloc[i]['trueNeg'] = stats[2]
-        overallModelStats.iloc[i]['falsePos'] = stats[3]
-        overallModelStats.iloc[i]['falseNeg'] = stats[4]
-    overallModelStats.to_csv('train_maxEpoch_stats'+str(j)+'.csv')
+    print(overallModelStats)
+    print(overallModelStats.mean())
 
-print(overallModelStats)
-print(overallModelStats.mean())
+
+def runRandomForestModel():
+    data_train, data_dev = splitDataSet(data)
+    rfModel = runRandomForestModel()
+    # rfModel.train(data_train,maxEpochs = maxEpochs)
+
+    # predictions, stats = model.computeDevAcc(data_dev,printStats=False)
+
+    # params = model.getModelParams()
+
+    # if saveModel:
+    #     model.saveModel('curModel.model')
+    # # print(stats)
+    # # print(params)
+    return 0
+
+
+runRandomForestModel()

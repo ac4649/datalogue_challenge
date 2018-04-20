@@ -4,7 +4,7 @@ import csv
 import numpy as np
 from tqdm import *
 
-class DLmodel():
+class RNNmodel():
 
     def loadEmbedds(self,filename,embedLength):
         gloveEmbedds = pd.read_table(filename,sep=" ",quoting=csv.QUOTE_NONE,header=None)
