@@ -146,27 +146,30 @@ def runRNNTrials():
             overallModelStats.iloc[i]['falseNeg'] = stats[4]
         overallModelStats.to_csv('train_maxEpoch_stats'+str(j)+'.csv')
 
-    print(overallModelStats)
-    print(overallModelStats.mean())
-
+    return overallModelStats
 
 def runRandomForestModel():
     data_train, data_dev = splitDataSet(data)
-    rfModel = randomForestModel()
+    rfModel = randomForestModel(numEstimators=2)
 
     rfModel.train(data_train)
 
     predictions = rfModel.predict(data_dev)
+    # print(predictions)
 
-    # predictions, stats = model.computeDevAcc(data_dev,printStats=False)
-
-    # params = model.getModelParams()
+    predictions, stats = rfModel.computeDevAcc(data_dev,printStats=True)
 
     # if saveModel:
     #     model.saveModel('curModel.model')
     # # print(stats)
     # # print(params)
-    return 0
+    return stats
 
+numRuns = 10
+randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-runRandomForestModel()
+for i in trange(numRuns,desc='running model'):
+    curStats = runRandomForestModel()
+    randForestStats.append(pd.Series(curStats),ignore_index=True)
+
+print(randForestStats)
