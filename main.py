@@ -148,16 +148,16 @@ def runRNNTrials():
 
     return overallModelStats
 
-def runRandomForestModel():
+def runRandomForestModel(n_estimators = 2):
     data_train, data_dev = splitDataSet(data)
-    rfModel = randomForestModel(numEstimators=2)
+    rfModel = randomForestModel(numEstimators=n_estimators)
 
     rfModel.train(data_train)
 
     predictions = rfModel.predict(data_dev)
     # print(predictions)
 
-    predictions, stats = rfModel.computeDevAcc(data_dev,printStats=True)
+    predictions, stats = rfModel.computeDevAcc(data_dev,printStats=False)
 
     # if saveModel:
     #     model.saveModel('curModel.model')
@@ -169,7 +169,12 @@ numRuns = 10
 randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
 for i in trange(numRuns,desc='running model'):
-    curStats = runRandomForestModel()
-    randForestStats.append(pd.Series(curStats),ignore_index=True)
+    curStats = runRandomForestModel(n_estimators = 2)
+    randForestStats.iloc[i]['accuracy'] = curStats[0]
+    randForestStats.iloc[i]['truePos'] = curStats[1]
+    randForestStats.iloc[i]['trueNeg'] = curStats[2]
+    randForestStats.iloc[i]['falsePos'] = curStats[3]
+    randForestStats.iloc[i]['falseNeg'] = curStats[4]
 
 print(randForestStats)
+print(randForestStats.mean())
