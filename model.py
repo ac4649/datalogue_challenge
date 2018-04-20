@@ -81,7 +81,7 @@ class DLmodel():
         allLosses = []
         for j in trange(self.trainEpochs,desc="Training: "):
             epochLoss = 0
-            for i, data in train_data.iterrows():
+            for i, data in train_data.sample(frac=1).iterrows(): # randomly shuffle the data
                 #compute the loss
                 score, unkWords = self.forwardSequence(data['response_text_array'])
                 # print(self.truth2idx[data['class']])
