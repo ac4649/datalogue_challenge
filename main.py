@@ -168,7 +168,7 @@ def runRandomForestModel(n_estimators = 2):
 numRuns = 10
 randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-for j in trange(20,desc='Chaning parameters'):
+for j in trange(1,21,desc='Chaning parameters'):
     for i in trange(numRuns,desc='Running Models'):
         curStats = runRandomForestModel(n_estimators = j)
         randForestStats.iloc[i]['accuracy'] = curStats[0]
