@@ -1,4 +1,4 @@
-import sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 import pandas as pd
 import csv
 import numpy as np
@@ -11,19 +11,40 @@ class randomForestModel():
         gloveEmbedds.columns = ['word'] +  ['dim'+str(i) for i in range(embedLength)]
         return gloveEmbedds
 
-    def __init__(self,vocab):
+    def __init__(self, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt'):
+
+        self.EMBEDDING_SIZE = embedding_size
+        gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
+        # set vocab to be the vocab from the glove embeddings
+        vocab = gloveEmbedds['word'].values
+        self.embeddings = gloveEmbedds.drop('word',axis=1)
+
         self.word2idx = {w:i for i, w in  enumerate(vocab)}
         self.truth2idx = {'flagged':1, 'not_flagged':0}
         self.idx2truth = {1:'flagged',0:'not_flagged'}
 
         self.model = RandomForestClassifier()
 
-    def computeX(self,series):
-        for i in series:
-            print(i)
-        return series.sum(axis=1) # just doing summation of the embeddings
+    def computeX(self,sentences):
+        returnFrame = pd.DataFrame(index=sentences.index,columns=['dim'+str(i) for i in range(self.EMBEDDING_SIZE)])
+        for index, sentence in sentences.iteritems():
+            print(index)
+            sentenceFrame = pd.DataFrame(index = [i for i in range(len(sentence))],columns = ['dim'+str(i) for i in range(self.EMBEDDING_SIZE)])
+            for curIndex, word in enumerate(sentence):
+                if (word in self.word2idx):
+                    sentenceFrame.iloc[curIndex] = pd.Series(self.embeddings.iloc[self.word2idx[word]])
+            
+            returnFrame.loc[index] = sentenceFrame.sum() # just doing summation of the embeddings
+        return returnFrame
 
     def train(self,trainDataFrame):
-        computedX = computeX(trainDataFramedata['response_text_array'])
+        computedX = self.computeX(trainDataFrame['response_text_array'])
         self.model.fit(computedX,trainDataFrame['class'])
+    
+    def predict(self,testDataFrame):
+        computedX = self.computeX(testDataFrame['response_text_array'])
+        predictions = self.model.predict(computedX)
+        return predictions
+
+
 

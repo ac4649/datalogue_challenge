@@ -2,7 +2,7 @@
 # Started Tuesday Apr 17 2018
 # Due Tuesday Apr 24 2018
 import pandas as pd
-import dynet as dy
+# import dynet as dy
 import nltk
 import re
 from tqdm import *
@@ -152,8 +152,11 @@ def runRNNTrials():
 
 def runRandomForestModel():
     data_train, data_dev = splitDataSet(data)
-    rfModel = runRandomForestModel()
-    # rfModel.train(data_train,maxEpochs = maxEpochs)
+    rfModel = randomForestModel()
+
+    rfModel.train(data_train)
+
+    predictions = rfModel.predict(data_dev)
 
     # predictions, stats = model.computeDevAcc(data_dev,printStats=False)
 
