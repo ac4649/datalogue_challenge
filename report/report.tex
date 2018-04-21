@@ -129,7 +129,18 @@ The following tools and modules were used to complete this task:
 
 %------------------------------------------------
 \section{Preparing Data}
+The input data being sentences had to be cleaned up before passing into the models.
 
+The first step was to load the csv file into a pandas dataframe and see what the data looked like.
+The data was, as mentioned above, a label as well as a sequence of words (not an array implementation yet).
+Due to the inherent nature of natural language processing both the label and sequence of words had to
+be converted to something which the machine could understand. That is, the label had to be converted from 
+"flagged" or "not flagged" to 1 or 0 respectively and the sequence had to be converted to a series of word
+embeddings where each embedding represented a single word.
+
+The models were created to do the conversion from label to 1 or 0 and from sentence of words to sequence of embeddings.
+The embeddings used were the GloVe embeddings due to their versatility, however another embedding which could have been
+used is the word2vec embedding
 
 \section{Models}
 
