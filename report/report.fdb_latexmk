@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524349646 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524349646
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524349644 11980 1c1f51f0231052361caca272411aba54 ""
+["pdflatex"] 1524350327 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524350327
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524350324 12010 ec209416dc39b994a758203a488a0afc ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -101,11 +101,11 @@
   "images/hidden_dimm_test_graph.png" 1524348312 58205 80aad82eefb11bfd5023d8bf4ec87174 ""
   "images/hidden_dimm_test_table.png" 1524341458 139842 90a18ce1db65f585004d374f9e5f7253 ""
   "images/hidden_dimm_test_tpr-graph.png" 1524348464 53780 8e5965be6eca92ea2efc9a081c970ae9 ""
-  "report.aux" 1524349646 8 a94a2480d3289e625eea47cd1b285758 ""
+  "report.aux" 1524350327 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524349644 11980 1c1f51f0231052361caca272411aba54 ""
+  "report.tex" 1524350324 12010 ec209416dc39b994a758203a488a0afc ""
   (generated)
+  "report.pdf"
   "report.out"
   "report.log"
-  "report.pdf"
   "report.aux"

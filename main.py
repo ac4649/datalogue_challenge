@@ -165,7 +165,7 @@ def runRandomForestModel(n_estimators = 2):
     # # print(params)
     return stats
 
-def runRandomForesTrials():
+def runRandomForestTrials():
     numRuns = 15
     randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
@@ -184,6 +184,6 @@ def runRandomForesTrials():
         randForestStats.to_csv('randomForest_meanNotSum_'+str(j)+'_estimators')
 
 
-# runRandomForesTrials()
+# runRandomForestTrials()
 
 runRNNTrials()
