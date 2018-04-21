@@ -165,10 +165,10 @@ def runRandomForestModel(n_estimators = 2):
     # # print(params)
     return stats
 
-numRuns = 50
+numRuns = 15
 randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-for j in trange(1,21,desc='Chaning parameters'):
+for j in trange(1,21,desc='Changing parameters'):
     for i in trange(numRuns,desc='Running Models'):
         curStats = runRandomForestModel(n_estimators = j)
         randForestStats.iloc[i]['accuracy'] = curStats[0]
@@ -180,4 +180,4 @@ for j in trange(1,21,desc='Chaning parameters'):
 
     # print(randForestStats)
     # print(randForestStats.mean())
-    randForestStats.to_csv('randomFores_'+str(j)+'_estimators')
+    randForestStats.to_csv('randomForest_meanNotSum_'+str(j)+'_estimators')

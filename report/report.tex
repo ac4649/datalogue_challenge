@@ -108,24 +108,42 @@ flight booking, scheduling meeting, ordering food and many more. The application
 The data set contains 80 examples of responses entered into a therapy chatbot. Each of these responses
 contains an id as well as an identification. The identification is either "flagged" if the response
 was flagged for human intervention or "not flagged" if not.
+
+The task at hand was to create an AI agent to classify the user response. 
 %------------------------------------------------
 
-\section{Methods}
+\section{Tools}
 
-The following models were created and tuned:
+The following tools and modules were used to complete this task:
 \begin{itemize}
-\item dy-net built RNN Model using GloVe word embeddings
-\item sklearn Random Forest Classifier using GloVe word embeddings
+\item python 3.
+\item pandas
+\item dy-net (for the RNN)
+\item scikit learn (for the Random Forest)
+\item numpy
+\item tqdm (for progress bars)
+\item csv (For reading the csv embeddings to pandas)
+\item re (regular expressions) (for cleaning the data)
 \end{itemize}
- % Dummy text
+ 
 
-Text requiring further explanation\footnote{Example footnote}.
+%------------------------------------------------
+\section{Preparing Data}
+
+
+\section{Models}
+
+When looking at sentence classification, one the first thought was too look at an RNN encoder
+that would encode the sentence word by word and the computing a probability of being "flagged"
+ or "not flagged". The label with the highest probability would then be applied to the sentence input.
+
+\subsection{RNN}
 
 %------------------------------------------------
 
 \section{Results}
 
-\begin{table}
+\begin{table}[h]
 \caption{Example table}
 \centering
 \begin{tabular}{llr}

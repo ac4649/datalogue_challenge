@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524273720 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524273722
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524273720 6625 4803725e8cf46f9df94132f1fe667d60 ""
+["pdflatex"] 1524282409 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524282410
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524282408 7178 58428e1c43b1990a92bdb970295b5839 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -89,11 +89,11 @@
   "/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1495593472 2350277 a699055bee05bf8a40b0504752487295 ""
   "/usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1495593487 4129592 0e6cfee100d68e6d96b92c0258f2ff73 ""
   "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
-  "report.aux" 1524273722 1588 596ca5339f20a6d26a693e54ba9c5611 ""
-  "report.out" 1524273722 302 b80d3e5e100053b48e7649ed8176694e ""
-  "report.tex" 1524273720 6625 4803725e8cf46f9df94132f1fe667d60 ""
+  "report.aux" 1524282410 1837 878e05862e7af00a82df0110530249b0 ""
+  "report.out" 1524282410 442 a2692ed25b927c5c8471700f5ad91227 ""
+  "report.tex" 1524282408 7178 58428e1c43b1990a92bdb970295b5839 ""
   (generated)
-  "report.log"
   "report.out"
-  "report.aux"
   "report.pdf"
+  "report.aux"
+  "report.log"
