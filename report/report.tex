@@ -60,6 +60,9 @@
 
 \usepackage{hyperref} % For hyperlinks in the PDF
 
+\usepackage{graphicx} % added graphix package for images
+\graphicspath{ {images/} }
+
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -140,19 +143,83 @@ embeddings where each embedding represented a single word.
 
 The models were created to do the conversion from label to 1 or 0 and from sentence of words to sequence of embeddings.
 The embeddings used were the GloVe embeddings due to their versatility, however another embedding which could have been
-used is the word2vec embedding
+used is the word2vec embedding.
 
 \section{Models}
 
-When looking at sentence classification, one the first thought was too look at an RNN encoder
-that would encode the sentence word by word and the computing a probability of being "flagged"
- or "not flagged". The label with the highest probability would then be applied to the sentence input.
-
 \subsection{RNN}
+
+When looking at sentence classification, one of the first thought was too look at an RNN encoder
+that would encode the sentence word by word and the computing a probability of being "flagged"
+or "not flagged". The label with the highest probability would then be applied to the sentence input.
+
+\subsubsection{RNN Description}
+
+DESCRIPTION OF RNN AND IMAGE/SKETCH OF THE MODEL CRATED
+
+\subsubsection{Tuning Parameters}
+
+When the model was created, the different parameters were tuned:
+\begin{itemize}
+  \item{Embedding Dimmension}
+  \item{Hidden Dimmension Size}
+  \item{Number of Epochs Run}
+\end{itemize}
+
+The results for all of these tuning experiments are shown in the results section.
+
+
+\subsection{Random Forest}
+
+After getting results for the RNN encoder and finding the 
 
 %------------------------------------------------
 
 \section{Results}
+
+\subsection{RNN}
+
+\subsubsection{hidden dimmension}
+
+The hidden dimmension test was done by keeping all parameters of the RNN constant except for the 
+hidden dimmension of the RNN. The following figure shows the results for the hidden dimmension
+test performed. The test was performed by changing the size of the embedding dimmension from 0 to 9
+dimmensions in steps of 1. The training loss, dev set true positive #, dev set true negative #,
+dev set false positive # and dev set false negative # were computed for each of the models run 
+and a graph was created showing the true positive rate and the false positive rate.
+
+\begin{figure}[h]
+\includegraphics[width=6cm]{hidden_dimm_test_table}
+\centering
+\caption{Shows the table of hidden dimmension tests for the RNN}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=6cm]{hidden_dimm_test_graph}
+\centering
+\caption{Shows the graph of true positive count vs hidden dimmension of RNN}
+\end{figure}
+
+While this graphs shows the true positive count, the more interesting metric
+which can be derived fromt he true positive count and the false negative count
+is the true positive rate (tpr) which shows how much of the truth the model captures.
+
+The following figure shows the tpr for the RNN model for different hidden dimmensions.
+
+Please note that, because the 
+
+\begin{figure}[h]
+\includegraphics[width=6cm]{hidden_dimm_test_tpr-graph}
+\centering
+\caption{Shows the graph of true positive rate vs hidden dimmension of RNN}
+\end{figure}
+
+From this figure, we can clearly see that the tpr is greatest when the hidden dimmension is 3.
+Thus, the hidden dimmension will be set to 3 for the other models.
+
+\subsubsection{GloVe embedding size}
+
+\subsection{Random Forest}
 
 \begin{table}[h]
 \caption{Example table}

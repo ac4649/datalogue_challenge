@@ -3,7 +3,14 @@
 \BOOKMARK [1][-]{section.3}{Preparing Data}{}% 3
 \BOOKMARK [1][-]{section.4}{Models}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{RNN}{section.4}% 5
-\BOOKMARK [1][-]{section.5}{Results}{}% 6
-\BOOKMARK [1][-]{section.6}{Discussion}{}% 7
-\BOOKMARK [2][-]{subsection.6.1}{Subsection One}{section.6}% 8
-\BOOKMARK [2][-]{subsection.6.2}{Subsection Two}{section.6}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.1}{RNN Description}{subsection.4.1}% 6
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Tuning Parameters}{subsection.4.1}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Random Forest}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Results}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{RNN}{section.5}% 10
+\BOOKMARK [3][-]{subsubsection.5.1.1}{hidden dimmension}{subsection.5.1}% 11
+\BOOKMARK [3][-]{subsubsection.5.1.2}{GloVe embedding size}{subsection.5.1}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Random Forest}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 14
+\BOOKMARK [2][-]{subsection.6.1}{Subsection One}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.2}{Subsection Two}{section.6}% 16

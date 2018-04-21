@@ -130,7 +130,7 @@ def runRNNTrials():
         overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
         for i in trange(0,numRuns,desc="Param Runs "):
             # print("Run: " +str(i))
-            preds, stats, params = runRNNModel(hidden_dim = 2, num_layers = 1, embedding_size = 300, embedding_file = 'glove/glove.6B.300d.txt',maxEpochs = j)
+            preds, stats, params = runRNNModel(hidden_dim = 3, num_layers = 1, embedding_size = 300, embedding_file = 'glove/glove.6B.300d.txt',maxEpochs = j)
             # overallModelStats.append((stats,params))
             # curRun = pd.Series([param for param in params]+[stats for i in stats])
             overallModelStats.iloc[i]['maxEpochs'] = params[0]
@@ -168,7 +168,7 @@ def runRandomForestModel(n_estimators = 2):
 numRuns = 15
 randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-for j in trange(11,21,desc='Changing parameters'):
+for j in trange(16,21,desc='Changing parameters'):
     for i in trange(numRuns,desc='Running Models'):
         curStats = runRandomForestModel(n_estimators = j)
         randForestStats.iloc[i]['accuracy'] = curStats[0]
