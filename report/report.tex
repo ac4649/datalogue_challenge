@@ -53,7 +53,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
+\fancyhead[C]{Adrien Cogny $\bullet$ Apr 2018} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 \usepackage{titling} % Customizing the title section
@@ -70,14 +70,18 @@
 \posttitle{\end{center}} % Article title closing formatting
 \title{User Response Classification Challenge} % Article title
 \author{%
-\textsc{Adrien Cogny}\thanks{} \\[1ex] % Your name
+\textsc{Adrien Cogny} \\% Your name
 \normalsize Cornell Tech \\ % Your institution
 \normalsize \href{mailto:ac2753@cornell.edu}{ac2753@cornell.edu} % Your email address
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
 }
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent \blindtext % Dummy abstract text - replace \blindtext with your abstract text
+\noindent Abstract Text % Dummy abstract text - replace \blindtext with your abstract text
 \end{abstract}
 }
 
@@ -94,26 +98,26 @@
 
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
-\blindtext % Dummy text
+\lettrine[nindent=0em,lines=3]{C}hatbots are used in many applications today: customer support,
+flight booking, scheduling meeting, ordering food and many more. The application of a chatbot
+ explored in this dataset is for a therapy chatbot. These types of chatbot, while very effective,
+ may require human intervention. Determining when a human should intervene can be quite important,
+ in this case when a person requires help in dealing with a complex situation, and requires tools
+ to identify these situations. 
 
-\blindtext % Dummy text
-
+The data set contains 80 examples of responses entered into a therapy chatbot. Each of these responses
+contains an id as well as an identification. The identification is either "flagged" if the response
+was flagged for human intervention or "not flagged" if not.
 %------------------------------------------------
 
 \section{Methods}
 
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
+The following models were created and tuned:
 \begin{itemize}
-\item Donec dolor arcu, rutrum id molestie in, viverra sed diam
-\item Curabitur feugiat
-\item turpis sed auctor facilisis
-\item arcu eros accumsan lorem, at posuere mi diam sit amet tortor
-\item Fusce fermentum, mi sit amet euismod rutrum
-\item sem lorem molestie diam, iaculis aliquet sapien tortor non nisi
-\item Pellentesque bibendum pretium aliquet
+\item dy-net built RNN Model using GloVe word embeddings
+\item sklearn Random Forest Classifier using GloVe word embeddings
 \end{itemize}
-\blindtext % Dummy text
+ % Dummy text
 
 Text requiring further explanation\footnote{Example footnote}.
 

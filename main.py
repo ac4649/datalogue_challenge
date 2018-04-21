@@ -165,7 +165,7 @@ def runRandomForestModel(n_estimators = 2):
     # # print(params)
     return stats
 
-numRuns = 10
+numRuns = 50
 randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
 for j in trange(1,21,desc='Chaning parameters'):
