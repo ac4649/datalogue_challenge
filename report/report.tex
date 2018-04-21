@@ -141,6 +141,13 @@ be converted to something which the machine could understand. That is, the label
 "flagged" or "not flagged" to 1 or 0 respectively and the sequence had to be converted to a series of word
 embeddings where each embedding represented a single word.
 
+Natural language contains many words that are very common in sentences. These so-called stop words
+ ("their", "he", "she", etc...) can make classifying a sentence very hard as, when combining word
+ embeddings, they will take over the representation of the sentence simply by shear number. That is 
+ why in the pre-processing of each sentence (before it is given to the model), the stop words were removed
+ from the sentence. By removing the stop words, we do not loose much important information and
+ are able to classify more easily.
+
 The models were created to do the conversion from label to 1 or 0 and from sentence of words to sequence of embeddings.
 The embeddings used were the GloVe embeddings due to their versatility, however another embedding which could have been
 used is the word2vec embedding.
@@ -200,13 +207,19 @@ and a graph was created showing the true positive rate and the false positive ra
 \caption{Shows the graph of true positive count vs hidden dimmension of RNN}
 \end{figure}
 
-While this graphs shows the true positive count, the more interesting metric
-which can be derived fromt he true positive count and the false negative count
-is the true positive rate (tpr) which shows how much of the truth the model captures.
+This graph shows that the true positive count is always lower than the false negative count.
+This means that there are more instances where the model will classify a sentence as "not flagged"
+when in fact it should be "flagged" than there are instances where the model correctly classifies
+a sentence as "flagged." While this points towards this particular model
+(with the hyperparameters described below) not being good, the true positive rate and accuracies are
+derived (and much more important) metrics to look at.
+
+While this graphs shows the true positive count as well as the false negative counts,
+a more interesting metric which can be derived fromt he true positive count and
+the false negative count is the true positive rate (tpr) which shows how much 
+of the truth the model captures.
 
 The following figure shows the tpr for the RNN model for different hidden dimmensions.
-
-Please note that, because the 
 
 \begin{figure}[h]
 \includegraphics[width=6cm]{hidden_dimm_test_tpr-graph}
@@ -214,7 +227,15 @@ Please note that, because the
 \caption{Shows the graph of true positive rate vs hidden dimmension of RNN}
 \end{figure}
 
-From this figure, we can clearly see that the tpr is greatest when the hidden dimmension is 3.
+From this figure, we can clearly see that the tpr is greatest when the hidden dimmension is 3,
+ with the other parameters set to: number of epochs ran = 400, number of layers = 1 and embedding 
+ size = 50. This model received an accuracy of 0.591667 and a true positive rate of 0.347826.
+
+While the graph of accuracies shows that when the hidden dimension is of size 0, the accuracy jumps
+to ~0.7, this model would not be considered to be a good model as the true positive rate is non existant
+because we are not classifying any results as being "flagged", which defeats the whole purpose of the model.
+
+
 Thus, the hidden dimmension will be set to 3 for the other models.
 
 \subsubsection{GloVe embedding size}

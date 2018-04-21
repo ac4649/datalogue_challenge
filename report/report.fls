@@ -184,9 +184,6 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb9e.tfm
 INPUT images/hidden_dimm_test_graph.png
 INPUT ./images/hidden_dimm_test_graph.png
 INPUT ./images/hidden_dimm_test_graph.png
-INPUT images/hidden_dimm_test_tpr-graph.png
-INPUT ./images/hidden_dimm_test_tpr-graph.png
-INPUT ./images/hidden_dimm_test_tpr-graph.png
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplr9t.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplr9t.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplr9t.tfm
@@ -207,6 +204,9 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplb9e.vf
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/mathpazo/fplmb.tfm
+INPUT images/hidden_dimm_test_tpr-graph.png
+INPUT ./images/hidden_dimm_test_tpr-graph.png
+INPUT ./images/hidden_dimm_test_tpr-graph.png
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplr9t.vf
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/mathpazo/fplmri.tfm

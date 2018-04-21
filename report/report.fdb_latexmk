@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524347122 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524347122
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524347120 10411 1783c6d86d0c54d98ca4ba786f19613c ""
+["pdflatex"] 1524349646 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524349646
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524349644 11980 1c1f51f0231052361caca272411aba54 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -98,14 +98,14 @@
   "/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1495593472 2350277 a699055bee05bf8a40b0504752487295 ""
   "/usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1495593487 4129592 0e6cfee100d68e6d96b92c0258f2ff73 ""
   "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
-  "images/hidden_dimm_test_graph.png" 1524345987 49235 ff04f7c20e2f9d163cea834cf49f680a ""
+  "images/hidden_dimm_test_graph.png" 1524348312 58205 80aad82eefb11bfd5023d8bf4ec87174 ""
   "images/hidden_dimm_test_table.png" 1524341458 139842 90a18ce1db65f585004d374f9e5f7253 ""
-  "images/hidden_dimm_test_tpr-graph.png" 1524346618 59735 94e83b843e63daca6e9407ebc474def1 ""
-  "report.aux" 1524347122 8 a94a2480d3289e625eea47cd1b285758 ""
+  "images/hidden_dimm_test_tpr-graph.png" 1524348464 53780 8e5965be6eca92ea2efc9a081c970ae9 ""
+  "report.aux" 1524349646 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524347120 10411 1783c6d86d0c54d98ca4ba786f19613c ""
+  "report.tex" 1524349644 11980 1c1f51f0231052361caca272411aba54 ""
   (generated)
-  "report.aux"
-  "report.pdf"
-  "report.log"
   "report.out"
+  "report.log"
+  "report.pdf"
+  "report.aux"
