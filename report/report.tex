@@ -212,7 +212,7 @@ a sentence which was a sum of its parts.
 
 \subsection{RNN}
 
-\subsubsection{hidden dimmension}
+\subsubsection{Hidden dimmension}
 
 The hidden dimmension test was done by keeping all parameters of the RNN constant except for the 
 hidden dimmension of the RNN. The following figure shows the results for the hidden dimmension
@@ -284,58 +284,112 @@ available (50, 100, 200 and 300).
 \end{figure}
 
 The table and graph show that the true positive count is always smaller than the false negative count.
-However a dip can be seen in the false negative count
+However a dip can be seen in the false negative count at an embedding size of 200. This dip in
+false negatives is coupled by a rise in the true positive. This indicates that the embedding size of 200
+yields the best results. \footnote{Note that the increase in the true positive count and decrease in false
+negative counts graphed are not the same magnitude as the samples were drawn randomly from the training
+set and thus may not always contain the same number of positive and negative examples.}
+
+Confirmation of this is seen in the figures below as both the true positive rate and accuracy
+are highest at an embedding size of 200.
 
 \begin{figure}[H]
 \includegraphics[width=6cm]{rnn_embeddSize_test_tpr-graph}
-\centering
 \caption{Shows the graph of true positive rate vs embedding dimmensions of RNN}
+\centering
 \end{figure}
 
 
+However uppon further investigation, it seems that this may have been a random occurance due to the
+randomization of the data. After running this test several times, the graph did not show any significant
+improvement. For example, the following two figures was another run which illustrates that, depending
+on the random set of data, the best embeddings  chnage
+
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_embeddSize_test_graph1}
+\centering
+\end{figure}
+
+
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_embeddSize_test_tpr-graph1}
+\centering
+\end{figure}
+
+Therefore, for computation purposes, the embedding size was set to 100. This was thought to be
+a good compromise between a larger embedding which may provide more information and the speed 
+of loading the embeddings.
 
 \subsubsection{Number Layers}
+
+The final hyperparameter to be tuned was the number of layers that the rnn contained. Before this
+test, 
+
+
+
+\subsubsection{RNN Final Model}
+
+
 
 
 
 \subsection{Random Forest}
 
-\begin{table}[h]
-\caption{Example table}
+As mentioned above, when the best rnn model was tuned it yielded an accuracy of 
+
+
+\subsubsection{Summation Methodology}
+
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_summed_table}
 \centering
-\begin{tabular}{llr}
-\toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
-\bottomrule
-\end{tabular}
-\end{table}
+\caption{Shows the table for the experiments where the number of estimators used
+in the random forest classifier were used. This is for the summation methodology.}
+\end{figure}
 
-\blindtext % Dummy text
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_summed_graph}
+\centering
+\caption{Shows the graph for the experiments where the number of estimators used
+in the random forest classifier were used. This is for the summation methodology.}
+\end{figure}
 
-\begin{equation}
-\label{eq:emc}
-e = mc^2
-\end{equation}
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_summed_graph-tpr}
+\centering
+\caption{Shows the graph of true positive rate and accuracy vs number of estimators of random forest 
+with summed embeddings as representation for the sentence}
+\end{figure}
 
-\blindtext % Dummy text
 
-%------------------------------------------------
+\subsubsection{Mean Methodology}
 
-\section{Discussion}
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_meaned_table}
+\centering
+\caption{Shows the table for the experiments where the number of estimators used
+in the random forest classifier were used. This is for the mean methodology.}
+\end{figure}
 
-\subsection{Subsection One}
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_meaned_graph}
+\centering
+\caption{Shows the graph for the experiments where the number of estimators used
+in the random forest classifier were used. This is for the summation methodology.}
+\end{figure}
 
-A statement requiring citation \cite{Figueredo:2009dg}.
-\blindtext % Dummy text
+\begin{figure}[H]
+\includegraphics[width=6cm]{randForest_estimators_meaned_graph-tpr}
+\centering
+\caption{Shows the graph of true positive rate and accuracy vs number of estimators of random forest 
+with summed embeddings as representation for the sentence}
+\end{figure}
 
-\subsection{Subsection Two}
 
-\blindtext % Dummy text
+\subsubsection{Mean vs Summation Methodology}
+
+\subsubsection{Random Forest Final Model}
+
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST

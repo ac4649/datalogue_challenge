@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 APR 2018 20:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 APR 2018 22:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -651,31 +651,94 @@ e 281.
  [3 <./images/hidden_dimm_test_graph.png> <./images/hidden_dimm_test_tpr-graph.
 png> <./images/rnn_embeddSize_test_table.png> <./images/rnn_embeddSize_test_gra
 ph.png>]
-<images/rnn_embeddSize_test_tpr-graph.png, id=54, 331.2375pt x 228.855pt>
+<images/rnn_embeddSize_test_tpr-graph.png, id=55, 331.2375pt x 228.855pt>
 File: images/rnn_embeddSize_test_tpr-graph.png Graphic file (type png)
 
 <use images/rnn_embeddSize_test_tpr-graph.png>
 Package pdftex.def Info: images/rnn_embeddSize_test_tpr-graph.png used on input
- line 290.
+ line 297.
 (pdftex.def)             Requested size: 170.71652pt x 117.94719pt.
 
+<images/rnn_embeddSize_test_graph1.png, id=56, 315.1775pt x 225.84375pt>
+File: images/rnn_embeddSize_test_graph1.png Graphic file (type png)
 
-LaTeX Warning: Citation `Figueredo:2009dg' on page 4 undefined on input line 33
-3.
+<use images/rnn_embeddSize_test_graph1.png>
+Package pdftex.def Info: images/rnn_embeddSize_test_graph1.png used on input li
+ne 309.
+(pdftex.def)             Requested size: 170.71652pt x 122.32942pt.
 
-[4 <./images/rnn_embeddSize_test_tpr-graph.png>]
-Underfull \hbox (badness 1748) in paragraph at lines 347--351
+<images/rnn_embeddSize_test_tpr-graph1.png, id=57, 325.215pt x 228.855pt>
+File: images/rnn_embeddSize_test_tpr-graph1.png Graphic file (type png)
+
+<use images/rnn_embeddSize_test_tpr-graph1.png>
+Package pdftex.def Info: images/rnn_embeddSize_test_tpr-graph1.png used on inpu
+t line 315.
+(pdftex.def)             Requested size: 170.71652pt x 120.13669pt.
+
+<images/randForest_estimators_summed_table.png, id=58, 699.61375pt x 472.76625p
+t>
+File: images/randForest_estimators_summed_table.png Graphic file (type png)
+ <use images/randForest_estimators_summed_table.png>
+Package pdftex.def Info: images/randForest_estimators_summed_table.png used on 
+input line 344.
+(pdftex.def)             Requested size: 170.71652pt x 115.35623pt.
+
+<images/randForest_estimators_summed_graph.png, id=59, 309.155pt x 227.85126pt>
+File: images/randForest_estimators_summed_graph.png Graphic file (type png)
+<use images/randForest_estimators_summed_graph.png>
+Package pdftex.def Info: images/randForest_estimators_summed_graph.png used on 
+input line 351.
+(pdftex.def)             Requested size: 170.71652pt x 125.8227pt.
+ [4 <./images/rnn_embeddSize_test_tpr-graph.png> <./images/rnn_embeddSize_test_
+graph1.png> <./images/rnn_embeddSize_test_tpr-graph1.png> <./images/randForest_
+estimators_summed_table.png>]
+<images/randForest_estimators_summed_graph-tpr.png, id=77, 329.23pt x 228.855pt
+>
+File: images/randForest_estimators_summed_graph-tpr.png Graphic file (type png)
+
+ <use images/randForest_estimators_summed_graph-tpr.png>
+Package pdftex.def Info: images/randForest_estimators_summed_graph-tpr.png used
+ on input line 358.
+(pdftex.def)             Requested size: 170.71652pt x 118.67004pt.
+
+<images/randForest_estimators_meaned_table.png, id=78, 780.9175pt x 470.75874pt
+>
+File: images/randForest_estimators_meaned_table.png Graphic file (type png)
+ <use images/randForest_estimators_meaned_table.png>
+Package pdftex.def Info: images/randForest_estimators_meaned_table.png used on 
+input line 368.
+(pdftex.def)             Requested size: 170.71652pt x 102.91357pt.
+
+<images/randForest_estimators_meaned_graph.png, id=79, 313.17pt x 227.85126pt>
+File: images/randForest_estimators_meaned_graph.png Graphic file (type png)
+
+<use images/randForest_estimators_meaned_graph.png>
+Package pdftex.def Info: images/randForest_estimators_meaned_graph.png used on 
+input line 375.
+(pdftex.def)             Requested size: 170.71652pt x 124.20949pt.
+
+<images/randForest_estimators_meaned_graph-tpr.png, id=80, 330.23375pt x 227.85
+126pt>
+File: images/randForest_estimators_meaned_graph-tpr.png Graphic file (type png)
+
+ <use images/randForest_estimators_meaned_graph-tpr.png>
+Package pdftex.def Info: images/randForest_estimators_meaned_graph-tpr.png used
+ on input line 382.
+(pdftex.def)             Requested size: 170.71652pt x 117.79146pt.
+
+Underfull \hbox (badness 1748) in paragraph at lines 401--405
 []\T1/pplx/m/n/10 (+20) Figueredo, A. J.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 356.
-[5
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 356.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
+[5 <./images/randForest_estimators_summed_graph.png> <./images/randForest_estim
+ators_summed_graph-tpr.png> <./images/randForest_estimators_meaned_table.png> <
+./images/randForest_estimators_meaned_graph.png> <./images/randForest_estimator
+s_meaned_graph-tpr.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 356.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 356.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
 
 
 Package rerunfilecheck Warning: File `report.out' has changed.
@@ -684,37 +747,33 @@ Package rerunfilecheck Warning: File `report.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `report.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  FF8362C0BA9467910B687CE02601DD62;1088.
+(rerunfilecheck)             After:  45733488B9CE84AD04C38B29B67C94DF;1320.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 356.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
  ) 
 Here is how much of TeX's memory you used:
- 10310 strings out of 492995
- 160009 string characters out of 6132704
- 285929 words of memory out of 5000000
- 13437 multiletter control sequences out of 15000+600000
- 72919 words of font info for 253 fonts, out of 8000000 for 9000
+ 10383 strings out of 492995
+ 162272 string characters out of 6132704
+ 284929 words of memory out of 5000000
+ 13467 multiletter control sequences out of 15000+600000
+ 73729 words of font info for 273 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,13n,43p,291b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,13n,43p,341b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2017
-/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-
-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fo
-nts/type1/urw/palatino/uplri8a.pfb>
-Output written on report.pdf (5 pages, 366690 bytes).
+exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texm
+f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/
+fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on report.pdf (5 pages, 1009805 bytes).
 PDF statistics:
- 103 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
- 34 named destinations out of 1000 (max. 500000)
- 61471 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 129 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
+ 43 named destinations out of 1000 (max. 500000)
+ 61511 words of extra memory for PDF output out of 61914 (max. 10000000)
 
