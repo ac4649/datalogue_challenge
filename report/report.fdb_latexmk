@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524365148 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524365148
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524365145 16838 eec76c6c1c962cb16a848ab6597c596d ""
+["pdflatex"] 1524408297 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524408297
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524408293 17311 227314553ac2976c463f8ffbe5aca7fa ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -107,11 +107,11 @@
   "images/rnn_embeddSize_test_table.png" 1524353865 72563 c6b5e753aae8c9f85f76b16aa642b5ca ""
   "images/rnn_embeddSize_test_tpr-graph.png" 1524354020 62072 bfe5ace755bd6991e585960dc1ff730d ""
   "images/rnn_embeddSize_test_tpr-graph1.png" 1524363638 47526 54c9e9b33cfde79b1d6cd5946a372054 ""
-  "report.aux" 1524365148 8 a94a2480d3289e625eea47cd1b285758 ""
+  "report.aux" 1524408296 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524365145 16838 eec76c6c1c962cb16a848ab6597c596d ""
+  "report.tex" 1524408293 17311 227314553ac2976c463f8ffbe5aca7fa ""
   (generated)
-  "report.pdf"
-  "report.aux"
-  "report.out"
   "report.log"
+  "report.pdf"
+  "report.out"
+  "report.aux"
