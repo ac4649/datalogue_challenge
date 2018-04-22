@@ -124,7 +124,7 @@ def runRNNModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_
 def runRNNTrials():
     # Run the model multiple times with a given set of parameters to get the best parameters on average 
     # (no matter what the training )
-    numRuns = 15
+    numRuns = 20
     for j in tqdm([50,100,200,300],desc='Param Variation'):
     # for j in trange(0,10,desc='Param Variation'):
         overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])

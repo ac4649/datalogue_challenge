@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524350327 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524350327
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524350324 12010 ec209416dc39b994a758203a488a0afc ""
+["pdflatex"] 1524355284 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524355284
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524355280 14060 4e3b1add6ab0accb73c7e2f957f633b0 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -58,6 +58,7 @@
   "/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty" 1480098823 64866 1ea74c5f2d1685881497f021b8f186b2 ""
   "/usr/local/texlive/2017/texmf-dist/tex/latex/enumitem/enumitem.sty" 1480098827 42666 6fa770e3485520a6a5f2ea7d259c8f8d ""
   "/usr/local/texlive/2017/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty" 1480098827 22494 ab2f238426db63334832f85a72ef1f3b ""
+  "/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty" 1480098828 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/local/texlive/2017/texmf-dist/tex/latex/geometry/geometry.sty" 1480098829 40502 e003406220954b0716679d7928aedd8a ""
   "/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1480098830 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def" 1485129666 58250 3792a9d2d1d664ee8c742498e295b051 ""
@@ -101,11 +102,14 @@
   "images/hidden_dimm_test_graph.png" 1524348312 58205 80aad82eefb11bfd5023d8bf4ec87174 ""
   "images/hidden_dimm_test_table.png" 1524341458 139842 90a18ce1db65f585004d374f9e5f7253 ""
   "images/hidden_dimm_test_tpr-graph.png" 1524348464 53780 8e5965be6eca92ea2efc9a081c970ae9 ""
-  "report.aux" 1524350327 8 a94a2480d3289e625eea47cd1b285758 ""
+  "images/rnn_embeddSize_test_graph.png" 1524354009 52630 ab9c46dce66abd0663f95ef715b2513f ""
+  "images/rnn_embeddSize_test_table.png" 1524353865 72563 c6b5e753aae8c9f85f76b16aa642b5ca ""
+  "images/rnn_embeddSize_test_tpr-graph.png" 1524354020 62072 bfe5ace755bd6991e585960dc1ff730d ""
+  "report.aux" 1524355284 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524350324 12010 ec209416dc39b994a758203a488a0afc ""
+  "report.tex" 1524355280 14060 4e3b1add6ab0accb73c7e2f957f633b0 ""
   (generated)
-  "report.pdf"
-  "report.out"
   "report.log"
+  "report.pdf"
   "report.aux"
+  "report.out"

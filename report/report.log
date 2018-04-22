@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 APR 2018 18:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  21 APR 2018 20:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -349,6 +349,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip64
 )
+(/usr/local/texlive/2017/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count131
+\float@exts=\toks19
+\float@box=\box30
+\@float@everytoks=\toks20
+\@floatcapt=\box31
+)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -365,7 +373,7 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
-\Gread@gobject=\count131
+\Gread@gobject=\count132
 ))
 \Gin@req@height=\dimen159
 \Gin@req@width=\dimen160
@@ -373,26 +381,26 @@ File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Try loading font information for T1+pplx on input line 93.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
+LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Try loading font information for T1+pplx on input line 96.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/t1pplx.fd
 File: t1pplx.fd 2004/09/06 font definitions for T1/pplx.
 )
 \big@size=\dimen161
-LaTeX Info: Redefining \microtypecontext on input line 93.
+LaTeX Info: Redefining \microtypecontext on input line 96.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -442,38 +450,39 @@ File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 93.
+\AtBeginShipoutBox=\box32
+Package hyperref Info: Link coloring OFF on input line 96.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count132
+\c@section@level=\count133
 )
-LaTeX Info: Redefining \ref on input line 93.
-LaTeX Info: Redefining \pageref on input line 93.
-LaTeX Info: Redefining \nameref on input line 93.
+LaTeX Info: Redefining \ref on input line 96.
+LaTeX Info: Redefining \pageref on input line 96.
+LaTeX Info: Redefining \nameref on input line 96.
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count133
+\scratchcounter=\count134
 \scratchdimen=\dimen162
-\scratchbox=\box31
-\nofMPsegments=\count134
-\nofMParguments=\count135
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count136
+\scratchbox=\box33
+\nofMPsegments=\count135
+\nofMParguments=\count136
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count137
 \MPscratchDim=\dimen163
-\MPnumerator=\count137
-\makeMPintoPDFobject=\count138
-\everyMPtoPDFconversion=\toks20
+\MPnumerator=\count138
+\makeMPintoPDFobject=\count139
+\everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -492,33 +501,33 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <24.88> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 97.
-LaTeX Font Info:    Try loading font information for OT1+pplx on input line 97.
-
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 100.
+LaTeX Font Info:    Try loading font information for OT1+pplx on input line 100
+.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1pplx.fd
 File: ot1pplx.fd 2004/09/06 font definitions for OT1/pplx.
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 97.
-
+LaTeX Font Info:    Try loading font information for OML+zplm on input line 100
+.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 97.
-
+LaTeX Font Info:    Try loading font information for OMS+zplm on input line 100
+.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 97.
-
+LaTeX Font Info:    Try loading font information for OMX+zplm on input line 100
+.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 97.
-
+LaTeX Font Info:    Try loading font information for OT1+zplm on input line 100
+.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
@@ -531,108 +540,142 @@ Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <10> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 97.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 100.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/pplx/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for OMS+pplx on input line 122
+LaTeX Font Info:    Try loading font information for OMS+pplx on input line 125
 .
-LaTeX Font Info:    No file OMSpplx.fd. on input line 122.
+LaTeX Font Info:    No file OMSpplx.fd. on input line 125.
 
 
 LaTeX Font Warning: Font shape `OMS/pplx/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 122.
+(Font)              for symbol `textbullet' on input line 125.
 
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
 \T1/pplx/m/n/10 (+20) DESCRIPTION OF RNN AND IM-
  []
 
-/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:194: You can't use
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:192: Undefined con
+trol sequence.
+l.192 \subsubsetion
+                   {Tuning Parameters}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:220: You can't use
  `macro parameter character #' in horizontal mode.
-l.194 ...he training loss, dev set true positive #
+l.220 ...he training loss, dev set true positive #
                                                   , dev set true negative #,
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:194: You can't use
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:220: You can't use
  `macro parameter character #' in horizontal mode.
-l.194 ... true positive #, dev set true negative #
+l.220 ... true positive #, dev set true negative #
                                                   ,
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:195: You can't use
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:221: You can't use
  `macro parameter character #' in horizontal mode.
-l.195 dev set false positive #
+l.221 dev set false positive #
                                and dev set false negative # were computed fo...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:195: You can't use
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:221: You can't use
  `macro parameter character #' in horizontal mode.
-l.195 ...e positive # and dev set false negative #
+l.221 ...e positive # and dev set false negative #
                                                    were computed for each of...
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
 If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
-<images/hidden_dimm_test_table.png, id=18, 844.15375pt x 244.915pt>
+<images/hidden_dimm_test_table.png, id=19, 844.15375pt x 244.915pt>
 File: images/hidden_dimm_test_table.png Graphic file (type png)
 
 <use images/hidden_dimm_test_table.png>
-Package pdftex.def Info: images/hidden_dimm_test_table.png used on input line 1
-99.
+Package pdftex.def Info: images/hidden_dimm_test_table.png used on input line 2
+25.
 (pdftex.def)             Requested size: 170.71652pt x 49.52774pt.
 LaTeX Font Info:    Font shape `T1/pplx/bx/n' in size <9> not available
-(Font)              Font shape `T1/pplx/b/n' tried instead on input line 201.
+(Font)              Font shape `T1/pplx/b/n' tried instead on input line 227.
 
-<images/hidden_dimm_test_graph.png, id=20, 315.1775pt x 226.8475pt>
+<images/hidden_dimm_test_graph.png, id=21, 315.1775pt x 226.8475pt>
 File: images/hidden_dimm_test_graph.png Graphic file (type png)
 
 <use images/hidden_dimm_test_graph.png>
 Package pdftex.def Info: images/hidden_dimm_test_graph.png used on input line 2
-05.
+31.
 (pdftex.def)             Requested size: 170.71652pt x 122.87311pt.
- [2 <./images/hidden_dimm_test_table.png> <./images/hidden_dimm_test_graph.png>
-]
-<images/hidden_dimm_test_tpr-graph.png, id=37, 324.21124pt x 229.85875pt>
+ [2 <./images/hidden_dimm_test_table.png>] <images/hidden_dimm_test_tpr-graph.p
+ng, id=38, 324.21124pt x 229.85875pt>
 File: images/hidden_dimm_test_tpr-graph.png Graphic file (type png)
 
 <use images/hidden_dimm_test_tpr-graph.png>
 Package pdftex.def Info: images/hidden_dimm_test_tpr-graph.png used on input li
-ne 225.
+ne 251.
 (pdftex.def)             Requested size: 170.71652pt x 121.03539pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<images/rnn_embeddSize_test_table.png, id=39, 850.17625pt x 116.435pt>
+File: images/rnn_embeddSize_test_table.png Graphic file (type png)
 
- [3 <./images/hidden_dimm_test_tpr-graph.png>]
+<use images/rnn_embeddSize_test_table.png>
+Package pdftex.def Info: images/rnn_embeddSize_test_table.png used on input lin
+e 275.
+(pdftex.def)             Requested size: 170.71652pt x 23.37897pt.
 
-LaTeX Warning: Citation `Figueredo:2009dg' on page 4 undefined on input line 27
-6.
+<images/rnn_embeddSize_test_graph.png, id=40, 313.17pt x 226.8475pt>
+File: images/rnn_embeddSize_test_graph.png Graphic file (type png)
+
+<use images/rnn_embeddSize_test_graph.png>
+Package pdftex.def Info: images/rnn_embeddSize_test_graph.png used on input lin
+e 281.
+(pdftex.def)             Requested size: 170.71652pt x 123.66231pt.
+ [3 <./images/hidden_dimm_test_graph.png> <./images/hidden_dimm_test_tpr-graph.
+png> <./images/rnn_embeddSize_test_table.png> <./images/rnn_embeddSize_test_gra
+ph.png>]
+<images/rnn_embeddSize_test_tpr-graph.png, id=54, 331.2375pt x 228.855pt>
+File: images/rnn_embeddSize_test_tpr-graph.png Graphic file (type png)
+
+<use images/rnn_embeddSize_test_tpr-graph.png>
+Package pdftex.def Info: images/rnn_embeddSize_test_tpr-graph.png used on input
+ line 290.
+(pdftex.def)             Requested size: 170.71652pt x 117.94719pt.
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 290--294
+LaTeX Warning: Citation `Figueredo:2009dg' on page 4 undefined on input line 33
+3.
+
+[4 <./images/rnn_embeddSize_test_tpr-graph.png>]
+Underfull \hbox (badness 1748) in paragraph at lines 347--351
 []\T1/pplx/m/n/10 (+20) Figueredo, A. J.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 299.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 299.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 356.
+[5
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 356.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 299.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 299.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 356.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 356.
 
 
 Package rerunfilecheck Warning: File `report.out' has changed.
@@ -641,7 +684,7 @@ Package rerunfilecheck Warning: File `report.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `report.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  96A344F3CFE8BDD889E8BF19DA08D5F6;1003.
+(rerunfilecheck)             After:  FF8362C0BA9467910B687CE02601DD62;1088.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -651,16 +694,16 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 299.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 356.
  ) 
 Here is how much of TeX's memory you used:
- 10189 strings out of 492995
- 157971 string characters out of 6132704
- 283589 words of memory out of 5000000
- 13352 multiletter control sequences out of 15000+600000
- 61660 words of font info for 225 fonts, out of 8000000 for 9000
+ 10310 strings out of 492995
+ 160009 string characters out of 6132704
+ 285929 words of memory out of 5000000
+ 13437 multiletter control sequences out of 15000+600000
+ 72919 words of font info for 253 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,13n,43p,291b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,13n,43p,291b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -668,10 +711,10 @@ ive/2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/2017
 /texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texmf-
 dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/urw/palatino/uplri8a.pfb>
-Output written on report.pdf (4 pages, 240713 bytes).
+Output written on report.pdf (5 pages, 366690 bytes).
 PDF statistics:
- 86 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 28 named destinations out of 1000 (max. 500000)
- 52752 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 103 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
+ 34 named destinations out of 1000 (max. 500000)
+ 61471 words of extra memory for PDF output out of 61914 (max. 10000000)
 
