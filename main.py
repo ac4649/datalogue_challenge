@@ -236,13 +236,13 @@ def loadRandomForestModel(filename):
 
 # runRNNTrials()
 
-# finalRNN, finalTPR = getRNNFinalModel()
+finalRNN, finalTPR = getRNNFinalModel()
 # print(finalTPR)
 
 # finalRF, finalRFTPR = getRandomForestFinalModel()
 # print(finalRFTPR)
 
-curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
+# curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
 
 # curRFM = loadRandomForestModel('bestRandomForest.model')
 # print(prepareString('Trying the model'))

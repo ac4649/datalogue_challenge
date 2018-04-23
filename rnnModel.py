@@ -19,14 +19,16 @@ class RNNmodel():
         # load the glove pre-trained embeddings
         # print("Loading Embeddings")
 
-        self.EMBEDDING_SIZE = embedding_size
-        gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
+
         # set vocab to be the vocab from the glove embeddings
         self.paramCollection = dy.ParameterCollection()
 
         if model_filename:
             self.loadModel(model_filename)
         else:
+            self.EMBEDDING_SIZE = embedding_size
+            gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
+
             self.vocab = gloveEmbedds['word'].values
             self.embeddings = gloveEmbedds.drop('word',axis=1)
             # print(vocab)
@@ -40,18 +42,20 @@ class RNNmodel():
 
             self.HIDDEN_DIM = hidden_dim
             self.NUM_LAYERS = num_layers
-            # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
-            self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
-            self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
-            self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
-            self.rnnBuilder = dy.SimpleRNNBuilder(self.NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
+        
+        # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
+        self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(self.embeddings.values)
+        self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
+        self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
+        self.rnnBuilder = dy.SimpleRNNBuilder(self.NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
 
+        if (model_filename):
+            self.paramCollection.populate(model_filename)
 
     def getModelParams(self):
         return [self.trainEpochs,self.NUM_LAYERS, self.EMBEDDING_SIZE, self.HIDDEN_DIM]
 
     def loadModel(self,filePath):
-        self.paramCollection.populate(filePath)
 
         self.vocab = pickle.load(open(filePath+"-vocab",'rb'))
         self.embeddings = pickle.load(open(filePath+"-embeddings",'rb'))
@@ -62,14 +66,14 @@ class RNNmodel():
 
         self.HIDDEN_DIM = pickle.load(open(filePath+"-hidden_dimm",'rb'))
         self.NUM_LAYERS = pickle.load(open(filePath+"-num_layers",'rb'))
-        print(paramCollection)
+        print(self.paramCollection)
 
         # work on loading the model
 
     def saveModel(self,filePath):
         self.paramCollection.save(filePath)
         pickle.dump(self.vocab, open(filePath+"-vocab", 'wb'))
-        pickle.dump(self.embeddings, open(filePath+"-embeddings"))
+        pickle.dump(self.embeddings, open(filePath+"-embeddings",'wb'))
 
         pickle.dump(self.word2idx, open(filePath+"-word2idx", 'wb'))
         pickle.dump(self.truth2idx, open(filePath+"-truth2idx", 'wb'))
