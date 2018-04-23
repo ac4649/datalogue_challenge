@@ -195,16 +195,18 @@ def getRNNFinalModel():
     for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
         preds, stats, params, model = runRNNModel(hidden_dim = 3, num_layers = 15, embedding_size = 100, embedding_file = 'glove/glove.6B.100d.txt',maxEpochs = 400)
-        bestTPR = stats[1]/(stats[1] + stats[4])
-        if bestTPR > currentBestTPR:
-            bestModel = model
-            bestModel.saveModel('bestRNN.model')
-            currentBestTPR = bestTPR
+        if (stats[1] + stats[4]) != 0:
+            bestTPR = stats[1]/(stats[1] + stats[4])
+            if bestTPR > currentBestTPR:
+                bestModel = model
+                bestModel.saveModel('bestRNN.model')
+                currentBestTPR = bestTPR
 
     return bestModel, bestTPR
 
 
-finalRNN = getRNNFinalModel()
+finalRNN, finalTPR = getRNNFinalModel()
+print(finaTPR)
 
 # runRandomForestTrials()
 
