@@ -202,7 +202,7 @@ def getRNNFinalModel():
                 bestTPR = stats[1]/(stats[1] + stats[4])
                 if bestTPR > currentBestTPR:
                     bestModel = model
-                    bestModel.saveModel('ModelRNN/bestRNN.model')
+                    bestModel.saveModel('RNNFinalModel/bestRNN.model')
                     currentBestTPR = bestTPR
 
     return bestModel, bestTPR
@@ -222,7 +222,7 @@ def getRandomForestFinalModel():
                 bestTPR = stats[1]/(stats[1] + stats[4])
                 if bestTPR > currentBestTPR:
                     bestModel = model
-                    bestModel.saveModel('bestRandomForest.model')
+                    bestModel.saveModel('RandomForestFinalModel/bestRandomForest.model')
                     currentBestTPR = bestTPR
 
     return bestModel, bestTPR
