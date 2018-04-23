@@ -163,7 +163,7 @@ def runRandomForestModel(n_estimators = 2,embedding_size = 100, embedding_file =
     #     model.saveModel('curModel.model')
     # # print(stats)
     # # print(params)
-    return stats
+    return stats, rfModel
 
 def runRandomForestTrials():
     numRuns = 15
@@ -187,7 +187,7 @@ def runRandomForestTrials():
 
 
 def getRNNFinalModel():
-    numRuns = 100
+    numRuns = 30
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
     
     currentBestTPR = 0
@@ -195,20 +195,44 @@ def getRNNFinalModel():
     for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
         preds, stats, params, model = runRNNModel(hidden_dim = 3, num_layers = 15, embedding_size = 100, embedding_file = 'glove/glove.6B.100d.txt',maxEpochs = 400)
-        if (stats[1] + stats[4]) != 0:
-            bestTPR = stats[1]/(stats[1] + stats[4])
-            if bestTPR > currentBestTPR:
-                bestModel = model
-                bestModel.saveModel('bestRNN.model')
-                currentBestTPR = bestTPR
+        if (stats[1] + stats[4]) > 3: 
+            if (stats[1] + stats[4]) != 0:
+                bestTPR = stats[1]/(stats[1] + stats[4])
+                if bestTPR > currentBestTPR:
+                    bestModel = model
+                    bestModel.saveModel('bestRNN.model')
+                    currentBestTPR = bestTPR
 
     return bestModel, bestTPR
 
 
-finalRNN, finalTPR = getRNNFinalModel()
-print(finaTPR)
+def getRandomForestFinalModel():
+    numRuns = 30
+    overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+    
+    currentBestTPR = 0
+    bestModel = None
+    for i in trange(0,numRuns,desc="Param Runs "):
+        # print("Run: " +str(i))
+        stats, model = runRandomForestModel(n_estimators = 10,embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt')
+        if (stats[1] + stats[4]) > 3: 
+            if (stats[1] + stats[4]) != 0:
+                bestTPR = stats[1]/(stats[1] + stats[4])
+                if bestTPR > currentBestTPR:
+                    bestModel = model
+                    bestModel.saveModel('bestRandomForest.model')
+                    currentBestTPR = bestTPR
+
+    return bestModel, bestTPR
 
 # runRandomForestTrials()
 
 # runRNNTrials()
+
+# finalRNN, finalTPR = getRNNFinalModel()
+# print(finaTPR)
+
+finalRF, finalRFTPR = getRandomForestFinalModel()
+print(finalRFTPR)
+
 
