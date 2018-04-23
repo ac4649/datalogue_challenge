@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 APR 2018 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  22 APR 2018 23:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -553,6 +553,11 @@ LaTeX Font Warning: Font shape `OMS/pplx/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbullet' on input line 125.
 
+
+Underfull \hbox (badness 2119) in paragraph at lines 128--129
+[]\T1/pplx/m/n/10 (+20) scikit learn (for the Ran-dom For-est)
+ []
+
 [1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -827,7 +832,7 @@ xlive/2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/20
 17/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on report.pdf (6 pages, 1198578 bytes).
+Output written on report.pdf (6 pages, 1198659 bytes).
 PDF statistics:
  148 PDF objects out of 1000 (max. 8388607)
  98 compressed objects within 1 object stream
