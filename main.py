@@ -119,7 +119,7 @@ def runRNNModel(hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_
         model.saveModel('curModel.model')
     # print(stats)
     # print(params)
-    return predictions, stats, params
+    return predictions, stats, params, model
 
 def runRNNTrials():
     # Run the model multiple times with a given set of parameters to get the best parameters on average 
@@ -186,9 +186,27 @@ def runRandomForestTrials():
         randForestStats.to_csv('Results/RandomForest/embedding_dimm/randomForest_embedd_size_'+str(j)+'_estimators.csv')
 
 
-# finalRNN = 
+def getRNNFinalModel():
+    numRuns = 100
+    overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+    
+    currentBestTPR = 0
+    bestModel = None
+    for i in trange(0,numRuns,desc="Param Runs "):
+        # print("Run: " +str(i))
+        preds, stats, params, model = runRNNModel(hidden_dim = 3, num_layers = 15, embedding_size = 100, embedding_file = 'glove/glove.6B.100d.txt',maxEpochs = 400)
+        bestTPR = stats[1]/(stats[1] + stats[4])
+        if bestTPR > currentBestTPR:
+            bestModel = model
+            bestModel.saveModel('bestRNN.model')
+            currentBestTPR = bestTPR
 
-runRandomForestTrials()
+    return bestModel, bestTPR
+
+
+finalRNN = getRNNFinalModel()
+
+# runRandomForestTrials()
 
 # runRNNTrials()
 
