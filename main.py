@@ -195,7 +195,7 @@ def getRNNFinalModel():
     for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
         preds, stats, params, model = runRNNModel(hidden_dim = 3, num_layers = 15, embedding_size = 100, embedding_file = 'glove/glove.6B.100d.txt',maxEpochs = 400)
-        if (stats[1] + stats[4]) > 3: 
+        if (stats[1] + stats[4]) > 3: # only check if the data has more than 3 positive examples (approx mean of the trials).
             if (stats[1] + stats[4]) != 0:
                 bestTPR = stats[1]/(stats[1] + stats[4])
                 if bestTPR > currentBestTPR:
@@ -215,7 +215,7 @@ def getRandomForestFinalModel():
     for i in trange(0,numRuns,desc="Param Runs "):
         # print("Run: " +str(i))
         stats, model = runRandomForestModel(n_estimators = 10,embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt')
-        if (stats[1] + stats[4]) > 3: 
+        if (stats[1] + stats[4]) > 3:  # only check if the data has more than 3 positive examples (approx mean of the trials).
             if (stats[1] + stats[4]) != 0:
                 bestTPR = stats[1]/(stats[1] + stats[4])
                 if bestTPR > currentBestTPR:
@@ -225,6 +225,7 @@ def getRandomForestFinalModel():
 
     return bestModel, bestTPR
 
+
 # runRandomForestTrials()
 
 # runRNNTrials()
@@ -232,7 +233,11 @@ def getRandomForestFinalModel():
 # finalRNN, finalTPR = getRNNFinalModel()
 # print(finaTPR)
 
-finalRF, finalRFTPR = getRandomForestFinalModel()
-print(finalRFTPR)
+# finalRF, finalRFTPR = getRandomForestFinalModel()
+# print(finalRFTPR)
 
+curRFM = randomForestModel(model_file_name='bestRandomForest.model')
 
+curRFM.predict(pd.DataFrame(['testing the loading']))
+
+    
