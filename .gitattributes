@@ -1,1 +1,5 @@
 *.model filter=lfs diff=lfs merge=lfs -text
+*.model-embedding_size filter=lfs diff=lfs merge=lfs -text
+*.model-embeddings filter=lfs diff=lfs merge=lfs -text
+*.model-hidden_dimm filter=lfs diff=lfs merge=lfs -text
+*.model-num_layers filter=lfs diff=lfs merge=lfs -text
