@@ -15,31 +15,36 @@ class RNNmodel():
     # def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
     def __init__(self, model_filename = None, hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt'):
         # vocab will be used to train the embeddings in the parameter collection
-
+            
         # load the glove pre-trained embeddings
         # print("Loading Embeddings")
+
         self.EMBEDDING_SIZE = embedding_size
         gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
         # set vocab to be the vocab from the glove embeddings
-        self.vocab = gloveEmbedds['word'].values
-        embeddings = gloveEmbedds.drop('word',axis=1)
-        # print(vocab)
-        # load the embeddings themselves as lookup parameters
-
-        self.word2idx = {w:i for i, w in  enumerate(self.vocab)}
-        self.truth2idx = {'flagged':1, 'not_flagged':0}
-        self.idx2truth = {1:'flagged',0:'not_flagged'}
-
-        OUTPUT_DIM = 2
-
-        self.HIDDEN_DIM = hidden_dim
-        self.NUM_LAYERS = num_layers
         self.paramCollection = dy.ParameterCollection()
-        # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
-        self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
-        self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
-        self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
-        self.rnnBuilder = dy.SimpleRNNBuilder(self.NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
+
+        if model_filename:
+            self.loadModel(model_filename)
+        else:
+            self.vocab = gloveEmbedds['word'].values
+            self.embeddings = gloveEmbedds.drop('word',axis=1)
+            # print(vocab)
+            # load the embeddings themselves as lookup parameters
+
+            self.word2idx = {w:i for i, w in  enumerate(self.vocab)}
+            self.truth2idx = {'flagged':1, 'not_flagged':0}
+            self.idx2truth = {1:'flagged',0:'not_flagged'}
+
+            OUTPUT_DIM = 2
+
+            self.HIDDEN_DIM = hidden_dim
+            self.NUM_LAYERS = num_layers
+            # self.wordEmbeddings = self.paramCollection.add_lookup_parameters((len(vocab),EMBEDDING_SIZE),init=dy.NumpyInitializer(embeddings.values))
+            self.wordEmbeddings = self.paramCollection.lookup_parameters_from_numpy(embeddings.values)
+            self.Weights = self.paramCollection.add_parameters((OUTPUT_DIM,self.HIDDEN_DIM))
+            self.bias = self.paramCollection.add_parameters((OUTPUT_DIM,))
+            self.rnnBuilder = dy.SimpleRNNBuilder(self.NUM_LAYERS,self.EMBEDDING_SIZE,self.HIDDEN_DIM,self.paramCollection)
 
 
     def getModelParams(self):
@@ -47,15 +52,32 @@ class RNNmodel():
 
     def loadModel(self,filePath):
         self.paramCollection.populate(filePath)
+
+        self.vocab = pickle.load(open(filePath+"-vocab",'rb'))
+        self.embeddings = pickle.load(open(filePath+"-embeddings",'rb'))
+
+        self.word2idx = pickle.load(open(filePath+"-word2idx",'rb'))
+        self.truth2idx = pickle.load(open(filePath+"-truth2idx",'rb'))
+        self.idx2truth = pickle.load(open(filePath+"-idx2truth",'rb'))
+
+        self.HIDDEN_DIM = pickle.load(open(filePath+"-hidden_dimm",'rb'))
+        self.NUM_LAYERS = pickle.load(open(filePath+"-num_layers",'rb'))
+        print(paramCollection)
+
         # work on loading the model
 
     def saveModel(self,filePath):
         self.paramCollection.save(filePath)
+        pickle.dump(self.vocab, open(filePath+"-vocab", 'wb'))
+        pickle.dump(self.embeddings, open(filePath+"-embeddings"))
+
         pickle.dump(self.word2idx, open(filePath+"-word2idx", 'wb'))
         pickle.dump(self.truth2idx, open(filePath+"-truth2idx", 'wb'))
         pickle.dump(self.idx2truth, open(filePath+"-idx2truth", 'wb'))
         pickle.dump(self.idx2truth, open(filePath+"-idx2truth", 'wb'))
-        pickle.dump(self.vocab, open(filePath+"-vocab", 'wb'))
+
+        pickle.dump(self.HIDDEN_DIM, open(filePath+"-hidden_dimm", 'wb'))
+        pickle.dump(self.NUM_LAYERS, open(filePath+"-num_layers", 'wb'))
 
 
 
