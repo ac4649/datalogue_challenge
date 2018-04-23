@@ -126,7 +126,7 @@ def runRNNTrials():
     # (no matter what the training )
     numRuns = 15
     # for j in tqdm([300],desc='Param Variation'):
-    for j in trange(21,26,desc='Param Variation'):
+    for j in trange(23,26,desc='Param Variation'):
         overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
         for i in trange(0,numRuns,desc="Param Runs "):
             # print("Run: " +str(i))
@@ -148,9 +148,9 @@ def runRNNTrials():
 
     return overallModelStats
 
-def runRandomForestModel(n_estimators = 2):
+def runRandomForestModel(n_estimators = 2,embedding_size = 100, embedding_file = 'glove/glove.6B.100d.txt'):
     data_train, data_dev = splitDataSet(data)
-    rfModel = randomForestModel(numEstimators=n_estimators)
+    rfModel = randomForestModel(numEstimators=n_estimators,embedding_size = embedding_size, embedding_file = embedding_file)
 
     rfModel.train(data_train)
 
@@ -167,23 +167,28 @@ def runRandomForestModel(n_estimators = 2):
 
 def runRandomForestTrials():
     numRuns = 15
-    randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
+    randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['embeddingSize','n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-    for j in trange(1,21,desc='Changing parameters'):
+    # for j in trange(1,21,desc='Changing parameters'):
+    for j in tqdm([50, 100, 200, 300],desc='Param Variation'):
         for i in trange(numRuns,desc='Running Models'):
-            curStats = runRandomForestModel(n_estimators = j)
+            curStats = runRandomForestModel(n_estimators = 10,embedding_size = j, embedding_file = 'glove/glove.6B.' + str(j) +'d.txt')
+            randForestStats.iloc[i]['embeddingSize'] = j
             randForestStats.iloc[i]['accuracy'] = curStats[0]
             randForestStats.iloc[i]['truePos'] = curStats[1]
             randForestStats.iloc[i]['trueNeg'] = curStats[2]
             randForestStats.iloc[i]['falsePos'] = curStats[3]
             randForestStats.iloc[i]['falseNeg'] = curStats[4]
-            randForestStats.iloc[i]['n_estimators'] = j
+            randForestStats.iloc[i]['n_estimators'] = 10
 
         # print(randForestStats)
         # print(randForestStats.mean())
-        randForestStats.to_csv('randomForest_meanNotSum_'+str(j)+'_estimators')
+        randForestStats.to_csv('Results/RandomForest/embedding_dimm/randomForest_embedd_size_'+str(j)+'_estimators.csv')
 
 
-# runRandomForestTrials()
+# finalRNN = 
 
-runRNNTrials()
+runRandomForestTrials()
+
+# runRNNTrials()
+
