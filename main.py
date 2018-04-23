@@ -202,7 +202,7 @@ def getRNNFinalModel():
                 bestTPR = stats[1]/(stats[1] + stats[4])
                 if bestTPR > currentBestTPR:
                     bestModel = model
-                    bestModel.saveModel('bestRNN.model')
+                    bestModel.saveModel('ModelRNN/bestRNN.model')
                     currentBestTPR = bestTPR
 
     return bestModel, bestTPR
@@ -227,24 +227,23 @@ def getRandomForestFinalModel():
 
     return bestModel, bestTPR
 
-def loadRandomForestModel():
+
+def loadRandomForestModel(filename):
+    model = pickle.load(open(filename,'rb'))
+    return model
 
 # runRandomForestTrials()
 
 # runRNNTrials()
 
-# finalRNN, finalTPR = getRNNFinalModel()
-# print(finaTPR)
+finalRNN, finalTPR = getRNNFinalModel()
+print(finalTPR)
 
-# finalRF, finalRFTPR = getRandomForestFinalModel()
-# print(finalRFTPR)
+finalRF, finalRFTPR = getRandomForestFinalModel()
+print(finalRFTPR)
 
-curRFM = pickle.load(open('bestRandomForest.model', 'rb'))
-
-print(prepareString('Trying the model'))
-print(pd.DataFrame(prepareString('Trying the model')).T)
-
-
-predictions = curRFM.predict(pd.DataFrame(prepareString('Trying the model'),columns=['response_text_array']))
-
-print(predictions)
+# curRFM = loadRandomForestModel('bestRandomForest.model')
+# print(prepareString('Trying the model'))
+# print(pd.DataFrame(prepareString('Trying the model')).T)
+# predictions = curRFM.predict(pd.DataFrame(prepareString('Trying the model'),columns=['response_text_array']))
+# print(predictions)

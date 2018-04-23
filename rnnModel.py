@@ -3,6 +3,7 @@ import pandas as pd
 import csv
 import numpy as np
 from tqdm import *
+import pickle
 
 class RNNmodel():
 
@@ -12,7 +13,7 @@ class RNNmodel():
         return gloveEmbedds
 
     # def __init__(self,vocab,numLayers = 1): # no need for vocab if using glove
-    def __init__(self, hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt'):
+    def __init__(self, model_filename = None, hidden_dim = 4, num_layers = 1, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt'):
         # vocab will be used to train the embeddings in the parameter collection
 
         # load the glove pre-trained embeddings
@@ -20,12 +21,12 @@ class RNNmodel():
         self.EMBEDDING_SIZE = embedding_size
         gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)
         # set vocab to be the vocab from the glove embeddings
-        vocab = gloveEmbedds['word'].values
+        self.vocab = gloveEmbedds['word'].values
         embeddings = gloveEmbedds.drop('word',axis=1)
         # print(vocab)
         # load the embeddings themselves as lookup parameters
 
-        self.word2idx = {w:i for i, w in  enumerate(vocab)}
+        self.word2idx = {w:i for i, w in  enumerate(self.vocab)}
         self.truth2idx = {'flagged':1, 'not_flagged':0}
         self.idx2truth = {1:'flagged',0:'not_flagged'}
 
@@ -46,9 +47,17 @@ class RNNmodel():
 
     def loadModel(self,filePath):
         self.paramCollection.populate(filePath)
+        # work on loading the model
 
     def saveModel(self,filePath):
         self.paramCollection.save(filePath)
+        pickle.dump(self.word2idx, open(filePath+"-word2idx", 'wb'))
+        pickle.dump(self.truth2idx, open(filePath+"-truth2idx", 'wb'))
+        pickle.dump(self.idx2truth, open(filePath+"-idx2truth", 'wb'))
+        pickle.dump(self.idx2truth, open(filePath+"-idx2truth", 'wb'))
+        pickle.dump(self.vocab, open(filePath+"-vocab", 'wb'))
+
+
 
     def computeScore(self,output):
 
