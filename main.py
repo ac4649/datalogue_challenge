@@ -126,7 +126,7 @@ def runRNNTrials():
     # (no matter what the training )
     numRuns = 15
     # for j in tqdm([300],desc='Param Variation'):
-    for j in trange(7,21,desc='Param Variation'):
+    for j in trange(19,21,desc='Param Variation'):
         overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
         for i in trange(0,numRuns,desc="Param Runs "):
             # print("Run: " +str(i))
