@@ -12,11 +12,8 @@ class randomForestModel():
         gloveEmbedds.columns = ['word'] +  ['dim'+str(i) for i in range(embedLength)]
         return gloveEmbedds
 
-    def __init__(self,model_file_name = None, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt', numEstimators = 10):
+    def __init__(self, embedding_size = 200, embedding_file = 'glove/glove.6B.200d.txt', numEstimators = 10):
 
-        if (model_file_name):
-            print("loading model from file: " + str(model_file_name))
-            return pickle.load((open(model_file_name, 'rb')))
 
         self.EMBEDDING_SIZE = embedding_size
         gloveEmbedds = self.loadEmbedds(embedding_file,self.EMBEDDING_SIZE)

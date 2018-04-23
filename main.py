@@ -9,6 +9,8 @@ from tqdm import *
 from rnnModel import RNNmodel
 from randomForestModel import randomForestModel
 
+import pickle
+
 # ----------------------------- DATA LOADING ----------------------------- #
 # load the data from the file
 data = pd.read_csv('deepnlp/Sheet_1.csv')
@@ -225,6 +227,7 @@ def getRandomForestFinalModel():
 
     return bestModel, bestTPR
 
+def loadRandomForestModel():
 
 # runRandomForestTrials()
 
@@ -236,8 +239,12 @@ def getRandomForestFinalModel():
 # finalRF, finalRFTPR = getRandomForestFinalModel()
 # print(finalRFTPR)
 
-curRFM = randomForestModel(model_file_name='bestRandomForest.model')
+curRFM = pickle.load(open('bestRandomForest.model', 'rb'))
 
-curRFM.predict(pd.DataFrame(['testing the loading']))
+print(prepareString('Trying the model'))
+print(pd.DataFrame(prepareString('Trying the model')).T)
 
-    
+
+predictions = curRFM.predict(pd.DataFrame(prepareString('Trying the model'),columns=['response_text_array']))
+
+print(predictions)
