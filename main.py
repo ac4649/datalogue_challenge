@@ -126,7 +126,7 @@ def runRNNTrials():
     # (no matter what the training )
     numRuns = 15
     # for j in tqdm([300],desc='Param Variation'):
-    for j in trange(19,21,desc='Param Variation'):
+    for j in trange(21,26,desc='Param Variation'):
         overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
         for i in trange(0,numRuns,desc="Param Runs "):
             # print("Run: " +str(i))
@@ -169,7 +169,7 @@ def runRandomForestTrials():
     numRuns = 15
     randForestStats = pd.DataFrame(index=[i for i in range(numRuns)],columns = ['n_estimators','accuracy','truePos','trueNeg','falsePos','falseNeg'])
 
-    for j in trange(16,21,desc='Changing parameters'):
+    for j in trange(1,21,desc='Changing parameters'):
         for i in trange(numRuns,desc='Running Models'):
             curStats = runRandomForestModel(n_estimators = j)
             randForestStats.iloc[i]['accuracy'] = curStats[0]

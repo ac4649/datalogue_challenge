@@ -323,10 +323,42 @@ of loading the embeddings.
 \subsubsection{Number Layers}
 
 The final hyperparameter to be tuned was the number of layers that the rnn contained. Before this
-test, the RNNs trained had a single layer.This test was performed twice in order to make sure there
- was consistency among even more random samples.
+test, the RNNs trained had a single layer. This test was performed twice in order to make sure there
+ was consistency among even more random samples. The number of layers of the rnn were varied
+ from 1 to 25 in increments of 1 for both tests.
 
+ The first test's graph shows the number of layers vs true positive count and false negative count is shown below:
 
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_numberLayers_test1}
+\caption{Shows the graph of true positive rate vs number of layers of RNN for the first trial}
+\centering
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_numberLayers_test1-tpr}
+\caption{Shows the graph of true positive rate vs number of layers of RNN for the first trial}
+\centering
+\end{figure}
+
+The second test's graph shows the same statistics as the previous one but for the second trial
+
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_numberLayers_test2}
+\caption{Shows the graph of true positive rate vs number of layers of RNN for the second trial}
+\centering
+\end{figure}
+  
+\begin{figure}[H]
+\includegraphics[width=6cm]{rnn_numberLayers_test2-tpr}
+\caption{Shows the graph of true positive rate vs number of layers of RNN for the second trial}
+\centering
+\end{figure}
+
+Both of these tests show that as the number of layers in the rnn increases the number of false
+negatives also increases. While the exact number of layers cannot be tuned very accuractely
+due to the fairly small dataset, it can be said that around 15 layers seems to be a fairly good point. 
+That is because both the accuracy and the true positive rates are 
 
 
 \subsubsection{RNN Final Model}
