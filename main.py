@@ -189,7 +189,7 @@ def runRandomForestTrials():
 
 
 def getRNNFinalModel():
-    numRuns = 30
+    numRuns = 5
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
     
     currentBestTPR = 0
@@ -209,7 +209,7 @@ def getRNNFinalModel():
 
 
 def getRandomForestFinalModel():
-    numRuns = 30
+    numRuns = 5
     overallModelStats = pd.DataFrame(index=[i for i in range(numRuns)],columns=['maxEpochs','num_layers','embeddingSize','hiddenDim','train_loss','accuracy','truePos','trueNeg','falsePos','falseNeg'])
     
     currentBestTPR = 0
@@ -236,13 +236,13 @@ def loadRandomForestModel(filename):
 
 # runRNNTrials()
 
-finalRNN, finalTPR = getRNNFinalModel()
+# finalRNN, finalTPR = getRNNFinalModel()
 # print(finalTPR)
 
 # finalRF, finalRFTPR = getRandomForestFinalModel()
 # print(finalRFTPR)
 
-# curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
+curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
 
 # curRFM = loadRandomForestModel('bestRandomForest.model')
 # print(prepareString('Trying the model'))

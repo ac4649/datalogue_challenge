@@ -22,6 +22,7 @@ class RNNmodel():
 
         # set vocab to be the vocab from the glove embeddings
         self.paramCollection = dy.ParameterCollection()
+        OUTPUT_DIM = 2
 
         if model_filename:
             self.loadModel(model_filename)
@@ -37,8 +38,6 @@ class RNNmodel():
             self.word2idx = {w:i for i, w in  enumerate(self.vocab)}
             self.truth2idx = {'flagged':1, 'not_flagged':0}
             self.idx2truth = {1:'flagged',0:'not_flagged'}
-
-            OUTPUT_DIM = 2
 
             self.HIDDEN_DIM = hidden_dim
             self.NUM_LAYERS = num_layers
@@ -57,6 +56,8 @@ class RNNmodel():
 
     def loadModel(self,filePath):
 
+        self.EMBEDDING_SIZE = pickle.load(open(filePath+"-embedd_size",'rb'))
+
         self.vocab = pickle.load(open(filePath+"-vocab",'rb'))
         self.embeddings = pickle.load(open(filePath+"-embeddings",'rb'))
 
@@ -66,12 +67,13 @@ class RNNmodel():
 
         self.HIDDEN_DIM = pickle.load(open(filePath+"-hidden_dimm",'rb'))
         self.NUM_LAYERS = pickle.load(open(filePath+"-num_layers",'rb'))
-        print(self.paramCollection)
 
         # work on loading the model
 
     def saveModel(self,filePath):
         self.paramCollection.save(filePath)
+        pickle.dump(self.EMBEDDING_SIZE, open(filePath+"-embedd_size", 'wb'))
+        
         pickle.dump(self.vocab, open(filePath+"-vocab", 'wb'))
         pickle.dump(self.embeddings, open(filePath+"-embeddings",'wb'))
 
