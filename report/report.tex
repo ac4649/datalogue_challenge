@@ -185,6 +185,7 @@ The embeddings used were the GloVe 6B embeddings which come from wikipedia scapp
 When looking at sentence classification, one of the first thought was too look at an RNN encoder
 that would encode the sentence word by word and the computing a probability of being "flagged"
 or "not flagged". The label with the highest probability would then be applied to the sentence input.
+This was furhter confirmed by researching text classification and RNNs \cite{LeeDernoncourt}
 
 \subsubsection{RNN Description}
 
@@ -206,7 +207,7 @@ The results for all of these tuning experiments are shown in the results section
 
 After getting results for the RNN encoder and finding the best possible RNN,
 it was posited (based on research into text classification) that a random
-forest classifier could be more apt at this task.
+forest classifier could be more apt at this task. \cite{XuGuoYeCheng}
 
 \subsubsection{Random Forest Description}
 
@@ -405,11 +406,15 @@ through dynet.
 
 The final rnn model got a true positive rate on its dev set of 0.375.
 
+It was saved under the "RNNFinalModel" directory and contains 10 files which are required for it
+to load.
+
+
 \subsection{Random Forest}
 
 After doing some more research, it was found that random forest classifiers could
 be utilized for this task. The RNN having given decent results but not exceptional,
-this was thought to be worth a try.
+this was thought to be worth a try.\cite{XuGuoYeCheng}
 
 \subsubsection{Summation Methodology}
 
@@ -481,7 +486,9 @@ In the same way the final model for the rnn was selected, the final model for th
 selected by running the model on 15 different training and dev sets, and saving the one which had the
 highest true postive rate amongst the models with more than 3 flagged truths.
 
-The final Random Forest model got a final true positive rate on its train-test split of 0.8. 
+The final Random Forest model got a final true positive rate on its train-test split of 0.8.
+
+It was saved under the "RandomForestFinalModel" directory and is named "bestRandomForest.model"
 
 \subsection{Final Model}
 
@@ -634,23 +641,28 @@ printed to the console when run.
 
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
 
-\begin{lstlisting}
-https://arxiv.org/pdf/1603.03827.pdf
-https://pdfs.semanticscholar.org/9b2f/ 84d85e5b6979bf375a2d4b15f7526597fc70.pdf
-http://dynet.readthedocs.io/en/latest/ tutorials_notebooks/RNNs.html
-https://talbaumel.github.io/blog/rnn%20batch/
-\end{lstlisting}
+\bibitem{LeeDernoncourt}
+Ji Young Lee, Franck Dernoncourt
+\\\texttt{https://arxiv.org/pdf/1603.03827.pdf}
 
+\bibitem{XuGuoYeCheng}
+Baoxun Xu, Xiufeng Guo, Yunming Ye, Jiefeng Cheng
+\\\texttt{https://pdfs.semanticscholar.org/9b2f/84d85e5b6979bf375a2d4b15f7526597fc70.pdf}
 
+\bibitem{dyNetTutorial}
+DyNet Tutorial
+\\\texttt{http://dynet.readthedocs.io/en/latest/tutorials_notebooks/RNNs.html}
 
-% \bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
-% Figueredo, A.~J. and Wolf, P. S.~A. (2009).
-% \newblock Assortative pairing and life history strategy - a cross-cultural
-%   study.
-% \newblock {\em Human Nature}, 20:317--330.
- 
+\bibitem{Baumel}
+Tal Baumel
+\\\texttt{https://talbaumel.github.io/blog/rnn%20batch/}
+
+\bibitem{LiuQiuHuang}
+Pengfei Liu, Xipeng Qiu, Xuanjing Huang
+\\\texttt{https://www.ijcai.org/Proceedings/16/Papers/408.pdf}
+
 \end{thebibliography}
-
+   
 %----------------------------------------------------------------------------------------
 
 \end{document}
