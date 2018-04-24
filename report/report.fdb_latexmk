@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524581643 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524581643
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524581640 26988 a19f00a4b36cfa399c7d70405a3683bd ""
+["pdflatex"] 1524588049 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524588049
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524588045 28012 2a480418b735a66ab56a6962d9f1f91d ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1480098666 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -128,11 +128,11 @@
   "images/rnn_numberLayers_test1.png" 1524447666 65776 a5e70aa0e6dba20f2cb045fd5a470bdb ""
   "images/rnn_numberLayers_test2-tpr.png" 1524447792 68186 b4b384753fe757ce1b223282f3c7d6a3 ""
   "images/rnn_numberLayers_test2.png" 1524447777 65859 9834f50ab17f81ec29c6e3576d099b3c ""
-  "report.aux" 1524581643 8 a94a2480d3289e625eea47cd1b285758 ""
+  "report.aux" 1524588049 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524581640 26988 a19f00a4b36cfa399c7d70405a3683bd ""
+  "report.tex" 1524588045 28012 2a480418b735a66ab56a6962d9f1f91d ""
   (generated)
-  "report.out"
   "report.aux"
   "report.log"
   "report.pdf"
+  "report.out"

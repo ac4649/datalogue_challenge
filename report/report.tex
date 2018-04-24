@@ -109,9 +109,6 @@
 }
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
-\begin{abstract}
-\noindent Abstract Text % Dummy abstract text - replace \blindtext with your abstract text
-\end{abstract}
 }
 
 %----------------------------------------------------------------------------------------
@@ -175,7 +172,7 @@ Natural language contains many words that are very common in sentences. These so
  are able to classify more easily.
 
 The models were created to do the conversion from label to 1 or 0 and from sentence of words to sequence of embeddings.
-The embeddings used were the GloVe 6B embeddings which come from wikipedia scapping\footnote{https://nlp.stanford.edu/projects/glove/}.
+The embeddings used were the GloVe 6B embeddings which come from wikipedia scraping\footnote{https://nlp.stanford.edu/projects/glove/}.
 
 
 \section{Models}
@@ -185,11 +182,14 @@ The embeddings used were the GloVe 6B embeddings which come from wikipedia scapp
 When looking at sentence classification, one of the first thought was too look at an RNN encoder
 that would encode the sentence word by word and the computing a probability of being "flagged"
 or "not flagged". The label with the highest probability would then be applied to the sentence input.
-This was furhter confirmed by researching text classification and RNNs [Lee & Dernoncourt]
+This was furhter confirmed by researching text classification and RNNs [Lee and Dernoncourt]
 
 \subsubsection{RNN Description}
 
-DESCRIPTION OF RNN AND IMAGE/SKETCH OF THE MODEL CRATED
+An RNN was created using dynet, the rnn was an encoder which would take each word in the
+sentence, find its embedding and compute a hidden state which it would then pass along to the
+next node in the network. The encoder yielded a final hiddent state on which softmax was applied
+to find the predictions. 
 
 \subsubsection{Tuning Parameters}
 
@@ -211,9 +211,12 @@ forest classifier could be more apt at this task. [Xu, Guo, Ye and Cheng]
 
 \subsubsection{Random Forest Description}
 
-RANDOM FOREST DESCRIPTION
+The Random Forest Model was created using scikit learn's random forest classification tool.
+This model would take the word embeddings for each word in the sentence and combine them in some way
+(either summation or mean which was a test performed). The resultant embedding would then be 
+passed through the Random Forest model to get a prediction.
 
-\subsubsetion{Tuning Parameters}
+\subsubsection{Tuning Parameters}
 When the model was created, the different parameters were tuned:
 
 \begin{itemize}
@@ -635,6 +638,14 @@ This function returns the predictions as well as accuracy, true positive count, 
 The function call takes and optional boolean printStats parameter which will dictate whether the stats argument
 printed to the console when run.
 
+\section{Notes} 
+
+1. While model accuracy is generally very important, in this case the more important metric
+would be true positive rate as we care more about getting people the help they need (and so
+getting a high true  positive rate is important) and if some people who don't necessarily need
+help are refered to specialists it is less cruicial than if people who need help don't. That
+is why emphasis was put on true positive rate in the experimentations.
+
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
@@ -662,6 +673,8 @@ Pengfei Liu, Xipeng Qiu, Xuanjing Huang
 \\\texttt{https://www.ijcai.org/Proceedings/16/Papers/408.pdf}
 
 \end{thebibliography}
+
+\\\texttt{The above tutorials [DyNet Tutorial and Tal Baumel] were used as help to construct the dynet model}
    
 %----------------------------------------------------------------------------------------
 
