@@ -507,6 +507,12 @@ response_id, class, response_text, , , , ,
 
 note: class may or may not be present depending on if the data is labeled (train & dev) or not (test)
 \end{lstlisting}
+
+The function call is as follows:
+\begin{lstlisting}
+loadedFile = loadData('deepnlp/Sheet_1.csv')
+\end{lstlisting}
+
 This function will read in the file line by line, create a pandas dataframe and apply a sentence cleaning method on each sentence.
 
 The function will return a dataframe containing all the information from the csv file as well as a "response text array" column which contains the
@@ -595,6 +601,17 @@ is called where train data is the data loaded using the previously mentioned way
 Note that for the RNN, the train function can take an additional max epochs parameter which specifies
 how many epochs the model will train for.
 
+\subsection{Predicting}
+
+Generating predictions is very similar in both models. After loading the file, sentence or array of sentences
+as mentioned above, simply call:
+
+\begin{lstlisting}
+model.predict(loadedSentences)
+\end{lstlisting}
+
+This function will return an array of predicted value (flagged or not flagged) for each of the texts.
+
 
 \subsection{Generating Statistics}
 
@@ -610,10 +627,6 @@ This function returns the predictions as well as accuracy, true positive count, 
 
 The function call takes and optional boolean printStats parameter which will dictate whether the stats argument
 printed to the console when run.
-
-\subsection{Predicting}
-
-
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
