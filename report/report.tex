@@ -463,10 +463,29 @@ The final Random Forest model got a final true positive rate on its train-test s
 \subsection{Final Model}
 
 Because the difference between the random forest model and the rnn true positive rates was significant,
-the Random Forest Model was selected as being the final model.
+the Random Forest Model was selected as being the final model. This model is described in the "Random Forest Final Model"
+section of this report.
 
 
-\subsection{Using the Model & Explanation of Code}
+\section{Using the Model & Explanation of Code}
+
+\subsection{Loading the Data}
+
+Because interacting with the models can be done in a variety of ways, prediction from file, prediction for single input sentence,
+prediction from array of sentences, loading the data to be utilized (either for training or for prediction) was made as versatile as possible.
+
+\subsubsection{Loading from File}
+
+The most common way to load data for training or batch prediction would be loading data from a file. The code provides a "loadData" function
+which takes a filepath as its parameter. This filepath must lead to a csv file just like the one provided by the challenge. I.E. the data in 
+the csv file should be in the format: "response_id,class,response_text,,,,,"
+
+This function will read in the file line by line, create a pandas dataframe and apply a sentence cleaning method on each sentence.
+
+The function will return a dataframe containing all the information from the csv file as well as a 'response_text_array' column which contains the
+treated text, ready to be used by the models.
+
+
 
 
 %----------------------------------------------------------------------------------------

@@ -246,13 +246,13 @@ data = loadData('deepnlp/Sheet_1.csv')
 
 # runRNNTrials(data) # runs the tests defined in the function
 
-finalRNN, finalTPR = getRNNFinalModel(data) # given the optimal parameters found in the tests, gets the final model
-print("\n")
-print(finalTPR)
+# finalRNN, finalTPR = getRNNFinalModel(data) # given the optimal parameters found in the tests, gets the final model
+# print("\n")
+# print(finalTPR)
 
-finalRF, finalRFTPR = getRandomForestFinalModel(data) # given the optimal parameters found in the tests, gets the final model
-print("\n")
-print(finalRFTPR)
+# finalRF, finalRFTPR = getRandomForestFinalModel(data) # given the optimal parameters found in the tests, gets the final model
+# print("\n")
+# print(finalRFTPR)
 
 convertedSentence = convertSentence('Roommate when he was going through death and loss of a gf. Did anything to get him out of his bedroom.')
 convertedSentences = convertSentences(
@@ -260,11 +260,11 @@ convertedSentences = convertSentences(
     'Where each sentence is an index in the array.'])
 
 
-curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
-curRFM = loadRandomForestModel('bestRandomForest.model')
+# curRNN = RNNmodel(model_filename='RNNFinalModel/bestRNN.model')
+curRFM = loadRandomForestModel('RandomForestFinalModel/bestRandomForest.model')
 
-print(curRNN.predict(convertedSentence))
+# print(curRNN.predict(convertedSentence))
 print(curRFM.predict(convertedSentence))
 
-print(curRNN.predict(convertedSentences))
+# print(curRNN.predict(convertedSentences))
 print(curRFM.predict(convertedSentences))

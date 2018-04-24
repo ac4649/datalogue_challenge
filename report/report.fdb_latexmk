@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1524543387 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524543387
-  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524543383 20689 c3607f7a9f88bf6672e6af03d8281d16 ""
+["pdflatex"] 1524544011 "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" "report.pdf" "report" 1524544011
+  "/Users/adriencogny/GIT/datalogue_challenge/report/report.tex" 1524544007 21798 646f354e26ea7e189d6e9b97a1a1bcab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm" 1480098688 2532 9ad73cf4dd2173a847f2a5f5608e0b9a ""
@@ -13,6 +13,7 @@
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplri8r.tfm" 1480098688 2720 70000d5e623e601132eab3cded5b819b ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/adobe/palatino/pplri9e.tfm" 1480098688 4636 04bb79b19bf5315ced00732a1dac5509 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1480098696 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1480098701 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1480098701 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/mathpazo/fplmb.tfm" 1480098713 984 3dcde7360ef3d34302e591b511cba83c ""
   "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/mathpazo/fplmr.tfm" 1480098713 1032 7fa31d93ecd4cbdfac02c7a1ebc6facc ""
@@ -28,8 +29,10 @@
   "/usr/local/texlive/2017/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb" 1480098746 50022 90249cba7e3e4e9845f80328d6f9bd13 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplb9e.vf" 1480098757 2288 8e238fed018b54574a256cd0062e19b9 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplr9e.vf" 1480098757 2296 bb1ff9494546688194a48c9b41b39dac ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplr9t.vf" 1480098757 1036 6bf3f57f140c19369dc13ae2329f0e57 ""
   "/usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplrc9e.vf" 1480098757 2476 9ee0dbbdd2dd550350b23d6a93c7c1af ""
   "/usr/local/texlive/2017/texmf-dist/fonts/vf/adobe/palatino/pplri9e.vf" 1480098757 2296 c260490d12463c5a352580ede007bb93 ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/vf/public/mathpazo/zplmr7m.vf" 1480098768 1812 de7624743c8bafe2ce204bec2f72ce7e ""
   "/usr/local/texlive/2017/texmf-dist/fonts/vf/public/mathpazo/zplmr7y.vf" 1480098768 1372 31129ac1f6b6f62aaec24c8fed41b02b ""
   "/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1480098806 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2017/texmf-dist/tex/generic/babel-english/english.ldf" 1485295264 7008 fd11ed3b832df052a4adb2c56e472748 ""
@@ -111,11 +114,11 @@
   "images/rnn_numberLayers_test1.png" 1524447666 65776 a5e70aa0e6dba20f2cb045fd5a470bdb ""
   "images/rnn_numberLayers_test2-tpr.png" 1524447792 68186 b4b384753fe757ce1b223282f3c7d6a3 ""
   "images/rnn_numberLayers_test2.png" 1524447777 65859 9834f50ab17f81ec29c6e3576d099b3c ""
-  "report.aux" 1524543387 8 a94a2480d3289e625eea47cd1b285758 ""
+  "report.aux" 1524544011 8 a94a2480d3289e625eea47cd1b285758 ""
   "report.out" 0 -1 0 ""
-  "report.tex" 1524543383 20689 c3607f7a9f88bf6672e6af03d8281d16 ""
+  "report.tex" 1524544007 21798 646f354e26ea7e189d6e9b97a1a1bcab ""
   (generated)
-  "report.pdf"
   "report.out"
-  "report.log"
   "report.aux"
+  "report.log"
+  "report.pdf"

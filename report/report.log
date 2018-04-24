@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 APR 2018 00:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  24 APR 2018 00:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -782,11 +782,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 453--454
 []\T1/pplx/m/n/10 (+20) Embedding File =
  []
 
-/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:469: Misplaced ali
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:470: Misplaced ali
 gnment tab character &.
 <argument> Using the Model &
                              Explanation of Code
-l.469 ...on{Using the Model & Explanation of Code}
+l.470 ...on{Using the Model & Explanation of Code}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -797,21 +797,77 @@ might try typing `S' now just to see what is salvageable.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `alignment tab' on input line 469.
+(hyperref)                removing `alignment tab' on input line 470.
+
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:481: Missing $ ins
+erted.
+<inserted text> 
+                $
+l.481 ... file should be in the format: "response_
+                                                  id,class,response_text,,,,,"
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:482: Missing $ ins
+erted.
+<inserted text> 
+                $
+l.482 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:485: Missing $ ins
+erted.
+<inserted text> 
+                $
+l.485 ...from the csv file as well as a 'response_
+                                                  text_array' column which c...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+/Users/adriencogny/GIT/datalogue_challenge/report/report.tex:487: Missing $ ins
+erted.
+<inserted text> 
+                $
+l.487 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 479--483
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
+[]\T1/pplx/m/n/10 (+20) The func-tion will re-turn a
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--487
+\T1/pplx/m/n/10 (+20) dataframe con-tain-ing all the in-for-ma-
+ []
+
+
+Underfull \hbox (badness 6510) in paragraph at lines 485--487
+\T1/pplx/m/n/10 (+20) tion from the csv file as well as a
+ []
+
+
+Overfull \hbox (147.64967pt too wide) in paragraph at lines 485--487
+\T1/pplx/m/n/10 (-20) 'response$[]\OML/zplm/m/it/10 ext[]rray[]columnwhichconta
+insthetreatedtext\OT1/pplx/m/n/10 (-20) , \OML/zplm/m/it/10 readytobeusedbythem
+odels\OT1/pplx/m/n/10 (-20) .$ 
+ []
+
+
+Underfull \hbox (badness 1748) in paragraph at lines 498--502
 []\T1/pplx/m/n/10 (+20) Figueredo, A. J.
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 488.
-[7
-
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 488.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 507.
+[7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 507.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 488.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 488.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 507.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 507.
 
 
 Package rerunfilecheck Warning: File `report.out' has changed.
@@ -820,21 +876,21 @@ Package rerunfilecheck Warning: File `report.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `report.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  C870B21BFBBFED233D6DB88EF418DCEB;1470.
+(rerunfilecheck)             After:  BFFF79A8A33D0196537BF67C7082CE2D;1599.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 488.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 507.
  ) 
 Here is how much of TeX's memory you used:
- 10421 strings out of 492995
- 163207 string characters out of 6132704
+ 10437 strings out of 492995
+ 163344 string characters out of 6132704
  284929 words of memory out of 5000000
  13483 multiletter control sequences out of 15000+600000
- 74286 words of font info for 281 fonts, out of 8000000 for 9000
+ 76695 words of font info for 293 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  36i,13n,43p,341b,360s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
@@ -843,10 +899,10 @@ xlive/2017/texmf-dist/fonts/type1/public/fpl/fplrc8a.pfb></usr/local/texlive/20
 17/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2017/texm
 f-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on report.pdf (7 pages, 1200842 bytes).
+Output written on report.pdf (7 pages, 1202907 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
- 51 named destinations out of 1000 (max. 500000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
+ 53 named destinations out of 1000 (max. 500000)
  61531 words of extra memory for PDF output out of 61914 (max. 10000000)
 
