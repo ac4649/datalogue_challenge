@@ -36,8 +36,8 @@ class randomForestModel():
                 if (word in self.word2idx):
                     sentenceFrame.iloc[curIndex] = pd.Series(self.embeddings.iloc[self.word2idx[word]])
             
-            # returnFrame.loc[index] = sentenceFrame.sum() # just doing summation of the embeddings
-            returnFrame.loc[index] = sentenceFrame.mean() # just doing summation of the embeddings
+            returnFrame.loc[index] = sentenceFrame.sum() # just doing summation of the embeddings
+            # returnFrame.loc[index] = sentenceFrame.mean() # just doing summation of the embeddings
 
         return returnFrame
 

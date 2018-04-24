@@ -372,14 +372,21 @@ The final RNN model had the following parameters:
 \item Number of Epochs trained for = 400 
 \end{itemize}
 
-The model was run 5 times to find the best true positive rate (TPR) on the dev set.
+The model was run 15 times to find the best true positive rate (TPR) on the dev set.
+This model was then saved. The saving procedure for the dynet model was more complex than
+for the Random Forest Model as dynet is unable to be pickled. Thus, each of the model-wide
+variables were pickled and the dynet save method was applied to the model. Thus, if the model
+was loaded from file (which can be done by calling the rnn model constructor with a filename
+as the filename argument), each piece is loaded separately and then the parameters are loaded
+through dynet.
 
-
+The final rnn model got a true positive rate on its dev set of 0.375.
 
 \subsection{Random Forest}
 
-As mentioned above, when the best rnn model was tuned it yielded an accuracy of 
-
+After doing some more research, it was found that random forest classifiers could
+be utilized for this task. The RNN having given decent results but not exceptional,
+this was thought to be worth a try.
 
 \subsubsection{Summation Methodology}
 
@@ -440,7 +447,24 @@ of the words rather than the average representation.
 
 The final model for the random forest had the following paramters:
 
+\begin{itemize}
+\item Number of Estimators = 10
+\item Embedding Size = 200
+\item Embedding File = 'glove/glove.6B.200d.txt'
+\item Methodology = Summation 
+\end{itemize}
+
+In the same way the final model for the rnn was selected, the final model for the random forest was
+selected by running the model on 15 different training and dev sets, and saving the one which had the
+highest true postive rate amongst the models with more than 3 flagged truths.
+
+The final Random Forest model got a final true positive rate on its train-test split of 0.8. 
+
 \subsection{Final Model}
+
+Because the difference between the random forest model and the rnn true positive rates was significant,
+the Random Forest Model was selected as being the final model.
+
 
 \subsection{Using the Model & Explanation of Code}
 
