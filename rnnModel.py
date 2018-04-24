@@ -147,7 +147,7 @@ class RNNmodel():
             outputSeries.loc[i] = self.idx2truth[np.argmax(dy.softmax(probs).value())]
         
         # print(outputSeries)
-        return outputSeries
+        return outputSeries.values
 
     def computeDevAcc(self,dev_data,printStats = True):
         # print(dev_data['class'].iloc[0])

@@ -363,7 +363,16 @@ That is because both the accuracy and the true positive rates are
 
 \subsubsection{RNN Final Model}
 
+The final RNN model had the following parameters:
+\begin{itemize}
+\item Hidden Dimmension = 3
+\item Number of Hidden Layers = 15
+\item Embedding Size = 100
+\item Embedding File = 'glove/glove.6B.100d.txt'
+\item Number of Epochs trained for = 400 
+\end{itemize}
 
+The model was run 5 times to find the best true positive rate (TPR) on the dev set.
 
 
 
